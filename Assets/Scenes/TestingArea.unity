@@ -60268,6 +60268,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7954607115095486137, guid: 39b161a7313c9674abfb1dae62809cb2, type: 3}
+      propertyPath: ppu
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954607115095486137, guid: 39b161a7313c9674abfb1dae62809cb2, type: 3}
       propertyPath: myCamera
       value: 
       objectReference: {fileID: 431148979}

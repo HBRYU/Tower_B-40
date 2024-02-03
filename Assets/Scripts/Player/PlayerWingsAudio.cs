@@ -39,7 +39,7 @@ public class PlayerWingsAudio : MonoBehaviour
             var velocity = wing.Velocity * (1f-velocitySmoothing) + prevVelocities[i] * velocitySmoothing;
             prevVelocities[i] = velocity;
             float totalVolume = 0.3f, sineMix = 0.5f, sawMix = 3f;
-            print(velocity);
+            // print(velocity);
             float sawWeight = Mathf.Clamp01(velocity / (velocityCap + 0.001f));
             float sineWeight = 1 - sawWeight;
 

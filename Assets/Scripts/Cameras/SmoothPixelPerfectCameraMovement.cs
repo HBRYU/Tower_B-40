@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
  
 public class SmoothPixelPerfectCameraMovement : MonoBehaviour
 {
-    public UnityEngine.Experimental.Rendering.Universal.PixelPerfectCamera pcc;
+    public int ppu;
     private Vector2 viewportScale;
     private RenderTexture tempRenderTexture;
     public Camera myCamera;
@@ -48,7 +48,7 @@ public class SmoothPixelPerfectCameraMovement : MonoBehaviour
     {
         myCamera.targetTexture = null; //blit directly into render buffer
         Vector2 screenWorldBounds = new Vector2(myCamera.orthographicSize * 2 * Screen.width / Screen.height, myCamera.orthographicSize * 2);
-        Vector2 direction = new Vector2(Mathf.Round(transform.position.x * pcc.assetsPPU) / pcc.assetsPPU - transform.position.x, Mathf.Round(transform.position.y * pcc.assetsPPU) / pcc.assetsPPU - transform.position.y);
+        Vector2 direction = new Vector2(Mathf.Round(transform.position.x * ppu) / ppu - transform.position.x, Mathf.Round(transform.position.y * ppu) / ppu - transform.position.y);
         Graphics.Blit(tempRenderTexture, null as RenderTexture, Vector2.one, -(direction / screenWorldBounds));
  
         RenderTexture.ReleaseTemporary(tempRenderTexture);
