@@ -117,7 +117,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="clip">The audio clip to play.</param>
     /// <param name="targetPositionGetter">Function that returns the Vector3 position for the audio source.</param>
-    /// <param name="freeCondition">Function that defines the condition under which the audio source will be freed.</param>
+    /// <param name="freeCondition">Function that defines the condition under which the audio source will be freed. (null=Free on clip end)</param>
     /// <param name="volume">Volume of the audio clip (default 1f).</param>
     /// <param name="reverb">Reverb mix of the audio source (default 0f).</param>
     /// <param name="spatialBlend">Spatial blend for stereo audio (default 0f).</param> 

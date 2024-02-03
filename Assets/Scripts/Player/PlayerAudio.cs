@@ -6,7 +6,7 @@ public class PlayerAudio : MonoBehaviour
 {
     private AudioManager audioManager;
     private PlayerMovement playerMovement;
-    public AudioClip walkSFX, jumpSFX;
+    public AudioClip walkSFX, jumpSFX, landSFX, dashSFX;
     
     void Start()
     {
@@ -27,7 +27,22 @@ public class PlayerAudio : MonoBehaviour
         audioManager.Request(jumpSFX,
             () => transform.position,
             null,  // Free on clip end
-            volume: 0.7f, loop: false, priority: 100);
+            volume: 1f, loop: false, priority: 100);
+    }
+    
+    public void PlayLandSFX()
+    {
+        audioManager.Request(landSFX,
+            () => transform.position,
+            null,  // Free on clip end
+            volume: 0.5f, loop: false, priority: 100);
     }
 
+    public void PlayDashSFX()
+    {
+        audioManager.Request(dashSFX,
+            () => transform.position,
+            null,  // Free on clip end
+            volume: 0.3f, loop: false, priority: 100);
+    }
 }

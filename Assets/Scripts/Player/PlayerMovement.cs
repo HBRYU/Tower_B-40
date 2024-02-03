@@ -262,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleUseInputX();
         Jump();
-        Dash();
+        HandleDash();
     }
 
     private void InitializeComponents()
@@ -280,12 +280,18 @@ public class PlayerMovement : MonoBehaviour
     private void HandleUseInputX()
     {
         // Used to determine whether to use x velocity from Input.GetAxis or use its current rb velocity (from dash)
-        OnGround = Physics2D.OverlapCircle(feetPosition.position, 0.5f, groundLayers) != null;
+        OnGround = Physics2D.OverlapCircle(feetPosition.position, 0.3f, groundLayers) != null;
         if (OnGround && !prevOnGround || onGroundTimer >= 0.5f || Input.GetAxisRaw("Horizontal") != 0f)
         {
             if(!useInputVelocity && onGroundTimer >= 0.5f) RequestAnimation("PlayDecel", "Trigger");
             useInputVelocity = true;
         }
+
+        if (OnGround && !prevOnGround)
+        {
+            playerAudio.PlayLandSFX();
+        }
+        
         prevOnGround = OnGround;
         if (OnGround)
             onGroundTimer += Time.deltaTime;
@@ -382,7 +388,7 @@ public class PlayerMovement : MonoBehaviour
         facingRight = !sprite.flipX;
     }
 
-    private void Dash()
+    private void HandleDash()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var position = transform.position;
@@ -401,6 +407,14 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F) && dashCooldownTimer <= 0f)
         {
+            Dash();
+        }
+        else
+            dashCooldownTimer -= Time.deltaTime;
+
+        
+        void Dash()
+        {
             rb.MovePosition(targetDashPos);
             dashCooldownTimer = dashCooldown;
             playerAnimation.RequestAnimation("Dash", "Trigger");
@@ -410,9 +424,9 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = (mousePos - position).normalized * upDashSpeed;
             useInputVelocity = false;
             onGroundTimer = 0f;
+            
+            playerAudio.PlayDashSFX();
         }
-        else
-            dashCooldownTimer -= Time.deltaTime;
     }
 
     private void RequestAnimation<T>(string param, T value)

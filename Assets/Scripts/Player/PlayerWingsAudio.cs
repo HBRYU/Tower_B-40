@@ -12,6 +12,8 @@ public class PlayerWingsAudio : MonoBehaviour
     public float velocityCap, velocitySmoothing;
     private List<float> prevVelocities = new List<float>();
 
+    private bool playingSine, playingSaw;
+
     // Update is called once per frame
 
     public void Setup()
@@ -38,14 +40,28 @@ public class PlayerWingsAudio : MonoBehaviour
             var wing = wings[i];
             var velocity = wing.Velocity * (1f-velocitySmoothing) + prevVelocities[i] * velocitySmoothing;
             prevVelocities[i] = velocity;
-            float totalVolume = 0.3f, sineMix = 0.5f, sawMix = 3f;
+            float totalVolume = 0.5f, sineMix = 0.5f, sawMix = 2f;
             // print(velocity);
             float sawWeight = Mathf.Clamp01(velocity / (velocityCap + 0.001f));
             float sineWeight = 1 - sawWeight;
 
-            audioSourcesSine[i].volume = totalVolume * sineMix * sineWeight;
-            audioSourcesSaw[i].volume = totalVolume * sawMix * sawWeight;
+            if (playingSaw)
+            {
+                audioSourcesSine[i].volume = 0f;
+                audioSourcesSaw[i].volume = 0f;
+            }
+            else
+            {
+                audioSourcesSine[i].volume = totalVolume * sineMix * sineWeight;
+                audioSourcesSaw[i].volume = totalVolume * sawMix * sawWeight;
+                if (sawWeight > 0.3f)
+                {
+                    playingSaw = true;
+                }
+            }
         }
+
+        playingSaw = false;
     }
 
     bool FreeWingAudioInstance(PlayerWing wing)
