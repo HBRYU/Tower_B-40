@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Damaged
-  m_Shader: {fileID: -6465566751694194690, guid: 98c2ed23bb0d89647b536ca97e8668ec, type: 3}
+  m_Name: EnvironmentTint
+  m_Shader: {fileID: -6465566751694194690, guid: d1c3b7629b9a7994ca27f0c0fa633fcb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -42,12 +42,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableOutline: 0
-    - _TintWeight: 0.75
+    - _TintWeight: 0.3
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.5803922, g: 0.70980394, b: 0.92549026, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &5800839869289196880
+--- !u!114 &248342498715674255
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

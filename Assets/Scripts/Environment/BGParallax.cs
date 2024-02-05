@@ -14,16 +14,37 @@ public class BGParallax : MonoBehaviour
     private Transform cameraTransform;
 
     [SerializeField] private bool xOnly = true;
+
+    [SerializeField] [Tooltip("0 for 'don't apply'")] private float zTintMultiplier;
+
+    [SerializeField] private bool applyColor;
+
+    [SerializeField] private Color color;
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < parentFolder.childCount; i++)
         {
             parallaxTransforms.Add(parentFolder.GetChild(i).transform);
+            if (zTintMultiplier > 0f)
+            {
+                ApplyZTint(parentFolder.GetChild(i).GetComponent<EnvironmentTint>(), parentFolder.GetChild(i).position.z);
+            }
         }
 
         cameraTransform = Camera.main.transform;
         prevCameraPos = cameraTransform.position;
+    }
+
+    void ApplyZTint(EnvironmentTint environmentTint, float z)
+    {
+        environmentTint.weight = Mathf.Clamp01(z * zTintMultiplier);
+        if (applyColor)
+        {
+            environmentTint.applyColor = true;
+            environmentTint.tint = color;
+        }
+        environmentTint.Apply();
     }
 
     // Update is called once per frame

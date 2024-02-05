@@ -447,7 +447,7 @@ SpriteRenderer:
   m_SortingLayerID: 666610701
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 2016661400, guid: 159784a81c8f12f429b95bb94db737fd, type: 3}
+  m_Sprite: {fileID: 731150646365600872, guid: 262f2013a32e1854ea4e3689db7838fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -867,7 +867,7 @@ SpriteRenderer:
   m_SortingLayerID: 666610701
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: -1009731659, guid: 159784a81c8f12f429b95bb94db737fd, type: 3}
+  m_Sprite: {fileID: 3773047608144879950, guid: 262f2013a32e1854ea4e3689db7838fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1054,7 +1054,7 @@ SpriteRenderer:
   m_SortingLayerID: 666610701
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2074261265, guid: 159784a81c8f12f429b95bb94db737fd, type: 3}
+  m_Sprite: {fileID: 6189973852684215066, guid: 262f2013a32e1854ea4e3689db7838fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1321,9 +1321,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.0627451, g: 0.3137255, b: 0.454902, a: 1}
-      key1: {r: 0.0627451, g: 0.3137255, b: 0.454902, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.45490196, g: 0.0627451, b: 0.13945137, a: 1}
+      key1: {r: 0.45490196, g: 0.0627451, b: 0.14117648, a: 1}
+      key2: {r: 0.0627451, g: 0.3137255, b: 0.454902, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -1331,7 +1331,7 @@ LineRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -1434,7 +1434,7 @@ SpriteRenderer:
   m_SortingLayerID: 666610701
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -456532708, guid: 159784a81c8f12f429b95bb94db737fd, type: 3}
+  m_Sprite: {fileID: -8785786818442444204, guid: 262f2013a32e1854ea4e3689db7838fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

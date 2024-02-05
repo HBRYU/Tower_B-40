@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1857906586651899705}
   - component: {fileID: 5208595405188619261}
   - component: {fileID: 7281170357888884027}
+  - component: {fileID: 8350686491935009148}
+  - component: {fileID: 751141851061895842}
+  - component: {fileID: 5133283178908991432}
   m_Layer: 0
   m_Name: _GM
   m_TagString: GM
@@ -45,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67bc3326a3e4e1647a23a6a3c17578f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pfManager: {fileID: 7281170357888884027}
+  audioManager: {fileID: 0}
   physicsSpeedMutlitplier: 1
   standardAStarTilemap: {fileID: 0}
   colliderTilemap: {fileID: 0}
@@ -64,3 +69,47 @@ MonoBehaviour:
   wallLayers:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &8350686491935009148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406823445785895096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3cddf9661c10f45b7a2d852cc33646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentFolder: {fileID: 0}
+  parallaxZMultiplier: 0.015
+  xOnly: 1
+--- !u!114 &751141851061895842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406823445785895096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3cddf9661c10f45b7a2d852cc33646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentFolder: {fileID: 0}
+  parallaxZMultiplier: 0.01
+  xOnly: 1
+--- !u!114 &5133283178908991432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406823445785895096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3b7e9cf78999d4cbb32fad427d2700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentFolder: {fileID: 0}
+  xSpeed: 0.075

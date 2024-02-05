@@ -194,6 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 45595243}
   - component: {fileID: 45595242}
+  - component: {fileID: 45595244}
   m_Layer: 0
   m_Name: City Sprites_16
   m_TagString: Untagged
@@ -221,7 +222,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,6 +269,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &45595244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45595241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!4 &76818108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: da79b1b6ce9aba34ba743d53eafc3314, type: 3}
@@ -1149,6 +1166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 330834728}
   - component: {fileID: 330834729}
+  - component: {fileID: 330834730}
   m_Layer: 0
   m_Name: Clouds_1
   m_TagString: Untagged
@@ -1191,7 +1209,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1213,7 +1231,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -60
   m_Sprite: {fileID: 8672716043325023904, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.8193109, g: 0.870189, b: 0.9685534, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1223,6 +1241,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &330834730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330834727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!4 &336165143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: cbe60a761d804954881f93a10f41d889, type: 3}
@@ -1238,6 +1272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 338850796}
   - component: {fileID: 338850795}
+  - component: {fileID: 338850797}
   m_Layer: 0
   m_Name: City Sprites_8
   m_TagString: Untagged
@@ -1265,7 +1300,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1312,6 +1347,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &338850797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338850794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1001 &359455644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1440,6 +1491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 396248578}
   - component: {fileID: 396248577}
+  - component: {fileID: 396248579}
   m_Layer: 0
   m_Name: City Sprites_8 (2)
   m_TagString: Untagged
@@ -1467,7 +1519,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1514,6 +1566,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &396248579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396248576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!4 &416519536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: cbe60a761d804954881f93a10f41d889, type: 3}
@@ -1595,6 +1663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 441935332}
   - component: {fileID: 441935331}
+  - component: {fileID: 441935333}
   m_Layer: 0
   m_Name: City Sprites_0
   m_TagString: Untagged
@@ -1622,7 +1691,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1669,6 +1738,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &441935333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441935330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1001 &445596032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2150,6 +2235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 637794648}
   - component: {fileID: 637794647}
+  - component: {fileID: 637794649}
   m_Layer: 0
   m_Name: City Sprites_2
   m_TagString: Untagged
@@ -2177,7 +2263,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2224,6 +2310,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &637794649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637794646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &671930967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2393,6 +2495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 687145301}
   - component: {fileID: 687145300}
+  - component: {fileID: 687145302}
   m_Layer: 0
   m_Name: Trees_0
   m_TagString: Untagged
@@ -2420,7 +2523,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2467,6 +2570,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &687145302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687145299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &689723259
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,6 +4673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 770174762}
   - component: {fileID: 770174763}
+  - component: {fileID: 770174764}
   m_Layer: 0
   m_Name: Clouds_0 (7)
   m_TagString: Untagged
@@ -4596,7 +4716,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4618,7 +4738,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -50
   m_Sprite: {fileID: -5408751994744628234, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.90880495, g: 0.9398942, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4628,6 +4748,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &770174764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770174761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!4 &772473350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: cbe60a761d804954881f93a10f41d889, type: 3}
@@ -4643,6 +4779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 819176192}
   - component: {fileID: 819176193}
+  - component: {fileID: 819176194}
   m_Layer: 0
   m_Name: Clouds_0 (5)
   m_TagString: Untagged
@@ -4685,7 +4822,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4707,7 +4844,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -50
   m_Sprite: {fileID: -5408751994744628234, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.90880495, g: 0.9398942, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4717,6 +4854,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &819176194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819176191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &834805899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4727,6 +4880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834805901}
   - component: {fileID: 834805900}
+  - component: {fileID: 834805902}
   m_Layer: 0
   m_Name: City Sprites_6
   m_TagString: Untagged
@@ -4754,7 +4908,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4801,6 +4955,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &834805902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834805899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &855223798
 GameObject:
   m_ObjectHideFlags: 0
@@ -5118,6 +5288,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 751141851061895842, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: zTintWeight
+      value: 0.101
+      objectReference: {fileID: 0}
+    - target: {fileID: 751141851061895842, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: parentFolder
+      value: 
+      objectReference: {fileID: 2025528022}
+    - target: {fileID: 751141851061895842, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: zTintMultiplier
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1406823445785895096, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
       propertyPath: m_Name
       value: _GM
@@ -5162,10 +5344,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5208595405188619261, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
-      propertyPath: pfManager
+    - target: {fileID: 5133283178908991432, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: parentFolder
       value: 
-      objectReference: {fileID: 1083079373}
+      objectReference: {fileID: 2025528022}
     - target: {fileID: 5208595405188619261, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
       propertyPath: audioManager
       value: 
@@ -5178,19 +5360,38 @@ PrefabInstance:
       propertyPath: graphTransform
       value: 
       objectReference: {fileID: 671930968}
+    - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: color.g
+      value: 0.8834627
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: color.r
+      value: 0.8018867
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: applyColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: parentFolder
+      value: 
+      objectReference: {fileID: 945957104}
+    - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: zTintMultiplier
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1406823445785895096, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1083079364}
-    - targetCorrespondingSourceObject: {fileID: 1406823445785895096, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1083079368}
-    - targetCorrespondingSourceObject: {fileID: 1406823445785895096, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1083079372}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
 --- !u!4 &922478425 stripped
 Transform:
@@ -5310,6 +5511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977032073}
   - component: {fileID: 977032072}
+  - component: {fileID: 977032074}
   m_Layer: 0
   m_Name: City Sprites_5
   m_TagString: Untagged
@@ -5337,7 +5539,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5384,6 +5586,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977032074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977032071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1001 &1010769198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5512,6 +5730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1031546752}
   - component: {fileID: 1031546753}
+  - component: {fileID: 1031546754}
   m_Layer: 0
   m_Name: Clouds_0 (2)
   m_TagString: Untagged
@@ -5554,7 +5773,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5576,7 +5795,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -50
   m_Sprite: {fileID: -5408751994744628234, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.90880495, g: 0.9398942, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5586,6 +5805,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1031546754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031546751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &1033296393
 GameObject:
   m_ObjectHideFlags: 0
@@ -5596,6 +5831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033296395}
   - component: {fileID: 1033296394}
+  - component: {fileID: 1033296396}
   m_Layer: 0
   m_Name: City Sprites_4
   m_TagString: Untagged
@@ -5623,7 +5859,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5670,6 +5906,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1033296396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033296393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1001 &1036718118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5896,66 +6148,6 @@ MonoBehaviour:
   - {fileID: 1851943766}
   - {fileID: 1426104052}
   drawDebugLines: 0
---- !u!1 &1083079360 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1406823445785895096, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
-  m_PrefabInstance: {fileID: 922307941}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1083079364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083079360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3cddf9661c10f45b7a2d852cc33646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentFolder: {fileID: 945957104}
-  parallaxZMultiplier: 0.015
-  xOnly: 1
---- !u!114 &1083079368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083079360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3cddf9661c10f45b7a2d852cc33646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentFolder: {fileID: 2025528022}
-  parallaxZMultiplier: 0.01
-  xOnly: 1
---- !u!114 &1083079372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083079360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad3b7e9cf78999d4cbb32fad427d2700, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentFolder: {fileID: 2025528022}
-  xSpeed: 0.075
---- !u!114 &1083079373 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7281170357888884027, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
-  m_PrefabInstance: {fileID: 922307941}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083079360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94e563526df4865a73397394bfcd9c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1101039001
 GameObject:
   m_ObjectHideFlags: 0
@@ -6778,6 +6970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258776831}
   - component: {fileID: 1258776830}
+  - component: {fileID: 1258776832}
   m_Layer: 0
   m_Name: City Sprites_7
   m_TagString: Untagged
@@ -6805,7 +6998,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6852,6 +7045,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1258776832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258776829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &1299628855
 GameObject:
   m_ObjectHideFlags: 0
@@ -7135,6 +7344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1376087259}
   - component: {fileID: 1376087260}
+  - component: {fileID: 1376087261}
   m_Layer: 0
   m_Name: Clouds_
   m_TagString: Untagged
@@ -7177,7 +7387,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7199,7 +7409,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -65
   m_Sprite: {fileID: -3268228384766312666, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.87735844, g: 0.9177897, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7209,6 +7419,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1376087261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376087258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1001 &1383822254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22123,6 +22349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1435986521}
   - component: {fileID: 1435986522}
+  - component: {fileID: 1435986523}
   m_Layer: 0
   m_Name: Clouds_1 (1)
   m_TagString: Untagged
@@ -22165,7 +22392,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22187,7 +22414,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -60
   m_Sprite: {fileID: 8672716043325023904, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.8193109, g: 0.870189, b: 0.9685534, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22197,6 +22424,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1435986523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435986520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &1458057176
 GameObject:
   m_ObjectHideFlags: 0
@@ -22207,6 +22450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1458057177}
   - component: {fileID: 1458057178}
+  - component: {fileID: 1458057179}
   m_Layer: 0
   m_Name: Trees_0 (1)
   m_TagString: Untagged
@@ -22249,7 +22493,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22281,6 +22525,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1458057179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458057176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &1458239468
 GameObject:
   m_ObjectHideFlags: 0
@@ -22329,6 +22589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1458319034}
   - component: {fileID: 1458319033}
+  - component: {fileID: 1458319035}
   m_Layer: 0
   m_Name: City Sprites_1
   m_TagString: Untagged
@@ -22356,7 +22617,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22403,6 +22664,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1458319035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458319032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!4 &1481878127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: da79b1b6ce9aba34ba743d53eafc3314, type: 3}
@@ -22494,6 +22771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1579801079}
   - component: {fileID: 1579801078}
+  - component: {fileID: 1579801080}
   m_Layer: 0
   m_Name: Clouds_0 (1)
   m_TagString: Untagged
@@ -22521,7 +22799,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22543,7 +22821,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -50
   m_Sprite: {fileID: -5408751994744628234, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.90880495, g: 0.9398942, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22568,6 +22846,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2025528022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1579801080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579801077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &1593367319
 GameObject:
   m_ObjectHideFlags: 0
@@ -22578,6 +22872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593367320}
   - component: {fileID: 1593367321}
+  - component: {fileID: 1593367322}
   m_Layer: 0
   m_Name: Clouds_0 (4)
   m_TagString: Untagged
@@ -22620,7 +22915,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22642,7 +22937,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -50
   m_Sprite: {fileID: -5408751994744628234, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.90880495, g: 0.9398942, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22652,6 +22947,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1593367322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593367319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &1595545984
 GameObject:
   m_ObjectHideFlags: 0
@@ -22770,6 +23081,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1616874834}
   - component: {fileID: 1616874835}
+  - component: {fileID: 1616874836}
   m_Layer: 0
   m_Name: Clouds_0 (3)
   m_TagString: Untagged
@@ -22812,7 +23124,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22834,7 +23146,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -50
   m_Sprite: {fileID: -5408751994744628234, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.90880495, g: 0.9398942, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22844,6 +23156,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1616874836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616874833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!4 &1618982543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: 1b4ddc22c30639b4aa1801c5929e5a27, type: 3}
@@ -23153,6 +23481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1773519108}
   - component: {fileID: 1773519107}
+  - component: {fileID: 1773519109}
   m_Layer: 0
   m_Name: Clouds_0
   m_TagString: Untagged
@@ -23180,7 +23509,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23202,7 +23531,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -50
   m_Sprite: {fileID: -5408751994744628234, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.90880495, g: 0.9398942, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -23227,6 +23556,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2025528022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1773519109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773519106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!224 &1827398045 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1437498839748725941, guid: e4dcc7c0c31e08641ab769e1881b18c9, type: 3}
@@ -23799,6 +24144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1878652499}
   - component: {fileID: 1878652498}
+  - component: {fileID: 1878652500}
   m_Layer: 0
   m_Name: City Sprites_8 (1)
   m_TagString: Untagged
@@ -23826,7 +24172,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23873,6 +24219,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1878652500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878652497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &1880532109
 GameObject:
   m_ObjectHideFlags: 0
@@ -58819,6 +59181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2006902269}
   - component: {fileID: 2006902270}
+  - component: {fileID: 2006902271}
   m_Layer: 0
   m_Name: Clouds_0 (6)
   m_TagString: Untagged
@@ -58861,7 +59224,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -58883,7 +59246,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -50
   m_Sprite: {fileID: -5408751994744628234, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.90880495, g: 0.9398942, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -58893,6 +59256,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2006902271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006902268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &2007843638
 GameObject:
   m_ObjectHideFlags: 0
@@ -58987,6 +59366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2022740903}
   - component: {fileID: 2022740902}
+  - component: {fileID: 2022740904}
   m_Layer: 0
   m_Name: City Sprites_11
   m_TagString: Untagged
@@ -59014,7 +59394,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -59061,6 +59441,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2022740904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022740901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &2025528021
 GameObject:
   m_ObjectHideFlags: 0
@@ -59350,6 +59746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102872996}
   - component: {fileID: 2102872997}
+  - component: {fileID: 2102872998}
   m_Layer: 0
   m_Name: Clouds_ (1)
   m_TagString: Untagged
@@ -59392,7 +59789,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -59414,7 +59811,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -65
   m_Sprite: {fileID: -3268228384766312666, guid: 3d1d3be2aefb6f6438e99dc282d76154, type: 3}
-  m_Color: {r: 0.87735844, g: 0.9177897, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -59424,6 +59821,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2102872998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102872995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!4 &2104541839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: da79b1b6ce9aba34ba743d53eafc3314, type: 3}
@@ -59444,6 +59857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2132578889}
   - component: {fileID: 2132578888}
+  - component: {fileID: 2132578890}
   m_Layer: 0
   m_Name: City Sprites_10
   m_TagString: Untagged
@@ -59471,7 +59885,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -59518,6 +59932,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945957104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2132578890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132578887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ecc57b70ba45468b60bc456c428b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnStart: 0
+  applyColor: 0
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  weight: 0
 --- !u!1 &2137762342
 GameObject:
   m_ObjectHideFlags: 0
