@@ -119,6 +119,7 @@ public class MimicAI : MonoBehaviour
     private Rigidbody2D rb;
 
     private MobStats stats;
+    private MimicAudio mimicAudio;
     
     private PFManager pfManager;
     private Transform playerTransform;
@@ -187,16 +188,11 @@ public class MimicAI : MonoBehaviour
         }
     }
 
-    void WakeUp()
-    {
-        // Temporary..
-        state = MimicState.Idle;
-    }
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<MobStatsInterface>().stats;
+        mimicAudio = GetComponent<MimicAudio>();
         stats.deathAction = Die;
         stats.takeDamageAction = TakeDamage;
         pfManager = GM.GetPFManager();
@@ -238,7 +234,8 @@ public class MimicAI : MonoBehaviour
         ProbablePlayerPos = playerTransform.position;
         
         // Change STATE to Chase
-        stateMachine.ChangeState(chaseState);
+        if(!stateMachine.CompareType(chaseState))
+            stateMachine.ChangeState(chaseState);
     }
 
     void PlayerSightExit()
@@ -773,6 +770,9 @@ public class MimicAI : MonoBehaviour
         public void Enter()
         {
             Reset();
+            ai.mimicAudio.PlayAlertSFX();
+            // Shit programming
+            ai.pupil.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
         }
 
         public void Update()
@@ -824,6 +824,7 @@ public class MimicAI : MonoBehaviour
                 timeSinceSightExit += Time.fixedDeltaTime;
                 if (timeSinceSightExit > timeOut)
                 {
+                    timeSinceSightExit = 0f;
                     ai.stateMachine.ChangeState(ai.searchState);
                 }
                 ai.ProbablePlayerPos = GuessPlayerPosition();
@@ -835,7 +836,10 @@ public class MimicAI : MonoBehaviour
             
         }
 
-        public void Exit() {}
+        public void Exit()
+        {
+            ai.pupil.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+        }
     }
 
     // Converted to use StateMachines by GPT-4.

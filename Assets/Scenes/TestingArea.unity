@@ -24527,6 +24527,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1941655561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2311074748414079071, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+  m_PrefabInstance: {fileID: 1067240559187376601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1941655570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941655561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f6bea5dbcb84d4eba1649ce7d5e1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alertSFX: {fileID: 8300000, guid: 9dfce7731a6a24646b112d87f47d306b, type: 3}
 --- !u!1001 &1944412103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60182,13 +60200,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2064241322}
     - target: {fileID: 6146107269340821662, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: numLegs
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146107269340821662, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: smallLegChance
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146107269340821662, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: chaseState.timeOut
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146107269340821662, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: moveVars.setLegTargetClock
+      value: 0.075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2311074748414079071, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 1941655570}
   m_SourcePrefab: {fileID: 100100000, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
 --- !u!1001 &1233957033444239610
 PrefabInstance:

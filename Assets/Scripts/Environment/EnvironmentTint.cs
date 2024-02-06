@@ -37,6 +37,8 @@ public class EnvironmentTint : MonoBehaviour
 
     public void Apply()
     {
+        if(sr == null)
+            sr = GetComponent<SpriteRenderer>();
         if (propertyBlock == null)
             propertyBlock = new MaterialPropertyBlock();
 
