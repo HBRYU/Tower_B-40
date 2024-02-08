@@ -350,6 +350,7 @@ public class MimicAI : MonoBehaviour
             if (Vector3.SqrMagnitude(leg.target - leg.Position) < connectionThreshold)
             {
                 leg.connected = true;
+                mimicAudio.PlayLegSFX(leg.Position, random: true);
             }
             
         }
@@ -384,13 +385,6 @@ public class MimicAI : MonoBehaviour
         float leastOptimalDot = 1f;
         foreach (var leg in legs)
         {
-            // if(!leg.connected) continue;
-            /*
-            float thisDirectionDeviation = (targetDirection - leg.Direction).sqrMagnitude;
-            float worstDirectionDeviation = (targetDirection - leastOptimalLeg.Direction).sqrMagnitude;
-            if (thisDirectionDeviation > worstDirectionDeviation)
-                leastOptimalLeg = leg;
-                */
             float thisDot = Vector3.Dot(targetDirection, leg.Direction);
             if (Mathf.Abs(leastOptimalDot) > Mathf.Abs(thisDot))
             {
@@ -428,6 +422,8 @@ public class MimicAI : MonoBehaviour
             // target point not found
             return false;
         }
+        
+        mimicAudio.PlayLegMoveSFX(leastOptimalLeg.Position, random: true);
 
         leastOptimalLeg.target = hit.point;
         leastOptimalLeg.connected = false;
@@ -889,6 +885,8 @@ public class MimicAI : MonoBehaviour
                 nextNode = availableNodes.Length > 0
                     ? availableNodes[Random.Range(0, availableNodes.Length)]
                     : currentNode; // Handle case where all nodes are searched
+                
+                ai.mimicAudio.PlaySearchSFX();
             }
 
             ai.destination = nextNode.position;
