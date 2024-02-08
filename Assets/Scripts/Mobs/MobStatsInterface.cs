@@ -7,6 +7,7 @@ using UnityEngine;
 public class MobStats
 {
     public string id;
+    public bool Dead { get; private set; }
     public float health;
     public Action deathAction, takeDamageAction;
 
@@ -14,6 +15,7 @@ public class MobStats
     {
         this.id = id;
         this.health = health;
+        Dead = false;
     }
     
     public void TakeDamage(float damage)
@@ -30,6 +32,7 @@ public class MobStats
     public void Die()
     {
         deathAction();
+        Dead = true;
     }
 }
 

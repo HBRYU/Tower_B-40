@@ -5,7 +5,7 @@ using UnityEngine;
 public class MimicAudio : MonoBehaviour
 {
     private AudioManager audioManager;
-    public AudioClip alertSFX, searchSFX;
+    public AudioClip alertSFX, searchSFX, warningSFX, slashSFX, releaseSFX;
 
     public AudioClip[] legMoveSFX, legSFX;
     
@@ -42,5 +42,23 @@ public class MimicAudio : MonoBehaviour
             i = Random.Range(0, legSFX.Length);
         audioManager.Request(legSFX[i], () => position, null,
             volume: 0.3f, reverb: 0.5f, loop: false, spatialBlend: 0.5f, priority: 50);
+    }
+
+    public void PlayWarningSFX()
+    {
+        audioManager.Request(warningSFX, () => transform.position, null,
+            volume: 1f, reverb: 0.5f, loop: false, spatialBlend: 0.5f, priority: 50);
+    }
+
+    public void PlaySlashSFX(Transform clawTransform)
+    {
+        audioManager.Request(slashSFX, () => clawTransform.position, null,
+            volume: 1f, reverb: 0.5f, loop: false, spatialBlend: 0.5f, priority: 50);
+    }
+
+    public void PlayReleaseSFX()
+    {
+        audioManager.Request(releaseSFX, () => transform.position, null,
+            volume: 1f, reverb: 0.5f, loop: false, spatialBlend: 0.5f, priority: 50);
     }
 }

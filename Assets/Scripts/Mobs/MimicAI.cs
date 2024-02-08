@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 public class MimicLeg
 {
     public readonly bool isSmall;
-    public bool disabled;
+    public bool disabled, dead;
     public Transform transform;
     public Transform bodyTransform;
     public LineRenderer lineRenderer;
@@ -150,6 +150,7 @@ public class MimicAI : MonoBehaviour
     public IdleState idleState;
     public ChaseState chaseState;
     public SearchState searchState;
+    public DeadState deadState;
 
 
     public Vector3 destination;
@@ -211,6 +212,8 @@ public class MimicAI : MonoBehaviour
         idleState.Initialize(this);
         chaseState.Initialize(this);
         searchState.Initialize(this);
+        deadState = new DeadState(this);
+        
         
         stateMachine.ChangeState(idleState);
     }
@@ -218,13 +221,13 @@ public class MimicAI : MonoBehaviour
     void FixedUpdate()
     {
         stateMachine.Update();
+        LegsBehaviour();
         
-        Sight();
-        
+        if(stats.Dead)
+            return;
         HeadBehaviour();
         EyeBehaviour();
-        LegsBehaviour();
-
+        Sight();
         gizmo.position = destination;
     }
 
@@ -328,6 +331,12 @@ public class MimicAI : MonoBehaviour
                 leg.MoveToTargetPoint();
                 leg.connected = false;
                 
+                continue;
+            }
+
+            if (leg.dead)
+            {
+                leg.connected = false;
                 continue;
             }
             
@@ -897,30 +906,50 @@ public class MimicAI : MonoBehaviour
         public void Exit() {}
     }
 
+    public class DeadState : IState
+    {
+        private MimicAI ai;
+
+        public DeadState(MimicAI ai)
+        {
+            this.ai = ai;
+        }
+        
+        public void Enter()
+        {
+            var legs = ai.legs;
+            foreach (var leg in legs)
+            {
+                leg.dead = true;
+                leg.transform.GetComponent<Rigidbody2D>().simulated = true;
+                leg.transform.GetComponent<BoxCollider2D>().enabled = true;
+            }
+
+            ai.pupil.GetComponent<SpriteRenderer>().color = Color.black;
+        }
+
+        public void Update()
+        {
+            
+        }
+
+        public void Exit()
+        {
+            
+        }
+    }
+    
+
     
     void Die()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        stateMachine.ChangeState(deadState);
+        GetComponent<MimicArm>().Die();
     }
 
     void TakeDamage()
     {
         GetComponent<Animator>().SetTrigger("TakeDamage");
     }
-
-    /*
-    private void OnDrawGizmos()
-    {
-        var pathQueueCopy = new Queue<Vector3>(pathQueue);
-        if (pathQueueCopy.Count == 0)
-            return;
-        Vector3 prevPoint = pathQueueCopy.Dequeue();
-        for (int i = 0; i < pathQueue.Count-1; i++)
-        {
-            Vector3 thisPoint = pathQueueCopy.Dequeue();
-            Debug.DrawLine(prevPoint, thisPoint);
-            prevPoint = thisPoint;
-        }
-    }
-    */
 }

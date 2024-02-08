@@ -2034,6 +2034,62 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &532087826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 470328086787841414, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+  m_PrefabInstance: {fileID: 1067240559187376601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &532087828
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532087826}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.73187447, y: 0.63176256}
+      - {x: -0.23299319, y: 0.00061801076}
+      - {x: -0.75473976, y: -0.6220776}
+      - {x: -0.15510505, y: -0.73076665}
+      - {x: 2.240251, y: 0.010311127}
+      - {x: -0.17667103, y: 0.72328424}
+  m_UseDelaunayMesh: 0
 --- !u!4 &556592270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: cbe60a761d804954881f93a10f41d889, type: 3}
@@ -24546,6 +24602,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alertSFX: {fileID: 8300000, guid: 9dfce7731a6a24646b112d87f47d306b, type: 3}
   searchSFX: {fileID: 8300000, guid: 9a4ebdc1f3724ef41a5e20fbd24b15e1, type: 3}
+  warningSFX: {fileID: 8300000, guid: e86a1c8fffa2fc2428a5cb5a58f1dcdc, type: 3}
+  slashSFX: {fileID: 8300000, guid: 6a6b8f973bc802f4e8678d8dc316991b, type: 3}
+  releaseSFX: {fileID: 8300000, guid: 5624a7ab5444f234ab76cb07e59c54bb, type: 3}
   legMoveSFX:
   - {fileID: 8300000, guid: a92c4cd22ef02a849b0366a2148adb94, type: 3}
   - {fileID: 8300000, guid: 2912c1b3317f36f489a1260bfe74a20d, type: 3}
@@ -60247,6 +60306,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1721554121334952784, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2311074748414079071, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: m_Name
       value: Mimic
@@ -60299,6 +60362,14 @@ PrefabInstance:
       propertyPath: chargeTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5716501317441812837, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949161121980528790, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6146107269340821662, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: gizmo
       value: 
@@ -60319,6 +60390,14 @@ PrefabInstance:
       propertyPath: moveVars.setLegTargetClock
       value: 0.075
       objectReference: {fileID: 0}
+    - target: {fileID: 6426648111035375212, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020732814644086673, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60329,6 +60408,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2311074748414079071, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1941655579}
+    - targetCorrespondingSourceObject: {fileID: 470328086787841414, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 532087828}
   m_SourcePrefab: {fileID: 100100000, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
 --- !u!1001 &1233957033444239610
 PrefabInstance:

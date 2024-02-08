@@ -40,28 +40,49 @@ public class MimicArm : MonoBehaviour
     
     private IdleState idleState;
     private AttackState attackState;
+    private DeadState deadState;
+
+    private MimicAudio mimicAudio;
+
+
+    private float timeSinceSightExit;
     void Start()
     {
         mimicAI = GetComponent<MimicAI>();
+        mimicAudio = GetComponent<MimicAudio>();
         
         state = MimicArmState.Idle;
 
         idleState = new IdleState(this, idlePosition, clawIdleAngle, clawSpeed);
-        attackState = new AttackState(arm: this, charge: chargeTime, damage: clawDamage, snapSpeed: clawSpeed * 3f, snapDuration: 1.5f, 
+        attackState = new AttackState(arm: this, charge: chargeTime, damage: clawDamage, snapSpeed: clawSpeed * 3f, snapDuration: 1f, 
             chargeClawPosition: idlePosition * 0.75f, chargeClawSpeed: clawSpeed * 2f, clawSize);
+        deadState = new DeadState(this);
+        
         stateMachine = new StateMachine();
         stateMachine.ChangeState(idleState);
         
         SetClawOpenAmount(1f);
+
+        timeSinceSightExit = 0f;
     }
 
     void DetermineState()
     {
+        if (mimicAI.PlayerInSight)
+        {
+            timeSinceSightExit = 0f;
+        }
+        else
+        {
+            timeSinceSightExit += Time.fixedDeltaTime;
+        }
+        
+        
         if (Vector2.Distance(mimicAI.ProbablePlayerPos, transform.position) <= limbLength * 2f && mimicAI.PlayerInSight)
         {
             stateMachine.ChangeStateIfNot(attackState);
         }
-        else
+        else if(timeSinceSightExit >= 1f)
         {
             stateMachine.ChangeStateIfNot(idleState);
         }
@@ -138,6 +159,11 @@ public class MimicArm : MonoBehaviour
         line1.SetPosition(1, jointTransform.position);
         line2.SetPosition(0, jointTransform.position);
         line2.SetPosition(1, clawTransform.position);
+    }
+
+    public void Die()
+    {
+        stateMachine.ChangeState(deadState);
     }
     
     private class IdleState : IState
@@ -221,6 +247,7 @@ public class MimicArm : MonoBehaviour
             snapTimer = snapDuration;
             arm.SetClawSpeed(chargeClawSpeed);
             clawAttackFlag = false;
+            arm.mimicAudio.PlayWarningSFX();
         }
 
         private void ChargeUpdate()
@@ -239,10 +266,11 @@ public class MimicArm : MonoBehaviour
             arm.clawTargetAngle = Mathf.Atan2((playerPos - position).y, (playerPos - position).x);
             
             chargeTimer -= Time.fixedDeltaTime;
-            if (chargeTimer <= 0f)
+            if (chargeTimer <= 0f && ai.PlayerInSight && Vector3.Distance(arm.transform.position, playerPos) < arm.limbLength * 2)
             {
                 arm.clawTargetPosition = playerPos - arm.transform.position;
                 arm.SetClawSpeed(snapSpeed);
+                arm.mimicAudio.PlaySlashSFX(arm.clawTransform);
             }
         }
 
@@ -272,6 +300,8 @@ public class MimicArm : MonoBehaviour
                 chargeTimer = charge;
                 arm.SetClawSpeed(chargeClawSpeed);
                 clawAttackFlag = false;
+                
+                arm.mimicAudio.PlayReleaseSFX();
             }
         }
 
@@ -286,7 +316,7 @@ public class MimicArm : MonoBehaviour
         
         public void Update()
         {
-            playerPos = ai.ProbablePlayerPos;
+            playerPos = GM.GetPlayerPosition();
             if (chargeTimer >= 0f)
             {
                 // #1. Charge State
@@ -301,6 +331,31 @@ public class MimicArm : MonoBehaviour
         public void Exit()
         {
             arm.SetClawOpenAmount(1f);
+        }
+    }
+
+    private class DeadState : IState
+    {
+        private MimicArm arm;
+        public DeadState(MimicArm arm)
+        {
+            this.arm = arm;
+        }
+        
+        public void Enter()
+        {
+            arm.clawTransform.AddComponent<Rigidbody2D>().simulated = true;
+            arm.clawTransform.GetComponent<PolygonCollider2D>().enabled = true;
+        }
+
+        public void Update()
+        {
+            
+        }
+
+        public void Exit()
+        {
+            
         }
     }
 }
