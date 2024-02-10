@@ -16,11 +16,13 @@ public class MimicLeg
     public Transform bodyTransform;
     public LineRenderer lineRenderer;
     public Vector3 Position => transform.position;
-    public Vector3 Direction => (target - bodyTransform.position).normalized;
+    public Vector3 Direction => (Position - bodyTransform.position).normalized;
     public bool connected = false;
     public Vector3 target;
     public readonly float speed;
     public readonly float force;
+
+    public float deadCableLength;
     
     public MimicLeg(bool isSmall, Transform transform, Transform bodyTransform, float speed, float force)
     {
@@ -337,6 +339,15 @@ public class MimicAI : MonoBehaviour
             if (leg.dead)
             {
                 leg.connected = false;
+                float d = Vector3.Distance(leg.Position, transform.position);
+                if (d < leg.deadCableLength)
+                    continue;
+
+                float frictionCoeff = 0.5f;
+                
+                Vector2 tension = leg.Direction * (leg.force * (d - leg.deadCableLength));
+                rb.AddForce(tension * frictionCoeff);
+                leg.transform.GetComponent<Rigidbody2D>().AddForce(-tension * frictionCoeff);
                 continue;
             }
             
@@ -909,6 +920,8 @@ public class MimicAI : MonoBehaviour
     public class DeadState : IState
     {
         private MimicAI ai;
+        private AudioSource audioSource;
+        private const float rate = 0.8f;
 
         public DeadState(MimicAI ai)
         {
@@ -923,14 +936,19 @@ public class MimicAI : MonoBehaviour
                 leg.dead = true;
                 leg.transform.GetComponent<Rigidbody2D>().simulated = true;
                 leg.transform.GetComponent<BoxCollider2D>().enabled = true;
+                leg.deadCableLength = Vector3.Distance(ai.transform.position, leg.Position);
             }
 
-            ai.pupil.GetComponent<SpriteRenderer>().color = Color.black;
+            ai.pupil.GetChild(0).GetComponent<SpriteRenderer>().color = Color.black;
+            audioSource = ai.GetComponent<AudioSource>();
         }
 
         public void Update()
         {
-            
+            if(audioSource.volume >= 0.05f)
+                audioSource.volume *= rate;
+            else
+                audioSource.Stop();
         }
 
         public void Exit()

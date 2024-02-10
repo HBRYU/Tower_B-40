@@ -16,7 +16,7 @@ public class PlayerWing
     
     
     public readonly int id;
-    public float damage;
+    public float damage, velocityDamageMultiplier, maxVelocityDamage;
     public PlayerWingState state;
     public int inputMouseButton;
     private Material material;
@@ -54,6 +54,8 @@ public class PlayerWing
 
     public float Velocity { get; private set; }
 
+    private PlayerWingsAudio wingsAudio;
+    
     public PlayerWing(int id, float damage, GameObject meshObject, Material material, Material cooldownMaterial, Vector3 idlePosition,
         float speed, float range, float travelDistanceCoeff, float cooldown, LayerMask collisionLayers)
     {
@@ -74,6 +76,7 @@ public class PlayerWing
         playerTransform = GM.PlayerInstance.transform;
         playerRb = playerTransform.GetComponent<Rigidbody2D>();
         playerMovement = playerTransform.GetComponent<PlayerMovement>();
+        wingsAudio = playerTransform.GetComponent<PlayerWingsAudio>();
 
         var cap = 60;
         positionHistory = new List<Vector3>(cap);
@@ -281,13 +284,18 @@ public class PlayerWing
         mobStatsInterface = targetObj.GetComponent<MobStatsInterface>();
         if (mobStatsInterface != null)
         {
-            mobStatsInterface.stats.TakeDamage(damage);
+            float additionalDamage = Mathf.Clamp(deltaPos.magnitude * velocityDamageMultiplier, 0f, maxVelocityDamage);
+            mobStatsInterface.stats.TakeDamage(damage + additionalDamage);
+            //Debug.Log(damage + additionalDamage);
             coolingDown = true;
             state = PlayerWingState.cooldown;
+            
+            wingsAudio.PlayWingHitSFX(position);
         }
 
         Rigidbody2D targetRb = targetObj.GetComponent<Rigidbody2D>();
         Vector3 impulse = deltaPos * 1000f;  // For now
+        //Debug.Log(impulse.magnitude);
         if(targetRb)
             targetRb.AddForce(impulse);
     }
@@ -337,7 +345,7 @@ public class PlayerWingsBehaviour : MonoBehaviour
     public Vector3 wing1Offset = new (-0.5f, 0.5f);
     public Vector3 wing2Offset = new (-0.25f, 0.5f);
 
-    public float damage, cooldown;
+    public float damage, cooldown, velocityDamageMultiplier, maxVelocityDamage;
 
     public LayerMask collisionLayers;
     public TrailRenderer wing1TrailRenderer, wing2TrailRenderer;
@@ -352,6 +360,11 @@ public class PlayerWingsBehaviour : MonoBehaviour
 
         wing1.trailRenderer = wing1TrailRenderer;
         wing2.trailRenderer = wing2TrailRenderer;
+
+        wing1.velocityDamageMultiplier = velocityDamageMultiplier;
+        wing2.velocityDamageMultiplier = velocityDamageMultiplier;
+        wing1.maxVelocityDamage = maxVelocityDamage;
+        wing2.maxVelocityDamage = maxVelocityDamage;
         
         var playerWingsAudio = GetComponent<PlayerWingsAudio>();
         

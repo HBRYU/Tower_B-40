@@ -2090,6 +2090,33 @@ PolygonCollider2D:
       - {x: 2.240251, y: 0.010311127}
       - {x: -0.17667103, y: 0.72328424}
   m_UseDelaunayMesh: 0
+--- !u!50 &532087830
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532087826}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &556592270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7320541560527462672, guid: cbe60a761d804954881f93a10f41d889, type: 3}
@@ -60294,6 +60321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSourcesSine: []
   audioSourcesSaw: []
+  wingHitSFX: {fileID: 8300000, guid: 0de52c9191486464b93461b605212def, type: 3}
   sine: {fileID: 8300000, guid: ed4f8ec4ffa5a7741ba480bf47a473a9, type: 3}
   saw: {fileID: 8300000, guid: 9ab23a8916a0469418f00ace5a84f721, type: 3}
   velocityCap: 150
@@ -60362,6 +60390,14 @@ PrefabInstance:
       propertyPath: chargeTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5374067890409505551, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: limbLength
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374067890409505551, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: coolDownTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5716501317441812837, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -60411,6 +60447,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 470328086787841414, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 532087828}
+    - targetCorrespondingSourceObject: {fileID: 470328086787841414, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 532087830}
   m_SourcePrefab: {fileID: 100100000, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
 --- !u!1001 &1233957033444239610
 PrefabInstance:
@@ -60774,6 +60813,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1730684239
       objectReference: {fileID: 0}
+    - target: {fileID: 4218229766908897472, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
+      propertyPath: groundLayers.m_Bits
+      value: 4224
+      objectReference: {fileID: 0}
     - target: {fileID: 4765354152505107203, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -60797,6 +60840,14 @@ PrefabInstance:
     - target: {fileID: 6790682061243805823, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.data[8]
       value: 2092988043
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450456520598219193, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
+      propertyPath: maxVelocityDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450456520598219193, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
+      propertyPath: velocityDamageMultiplier
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7777406868355104613, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
       propertyPath: m_SortingLayer

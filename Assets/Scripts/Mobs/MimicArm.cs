@@ -34,7 +34,7 @@ public class MimicArm : MonoBehaviour
 
     public float limbLength;  // Length of limb
 
-    public float chargeTime;
+    public float chargeTime, coolDownTime;
     public float clawDamage;
     public float clawSize;
     
@@ -54,7 +54,7 @@ public class MimicArm : MonoBehaviour
         state = MimicArmState.Idle;
 
         idleState = new IdleState(this, idlePosition, clawIdleAngle, clawSpeed);
-        attackState = new AttackState(arm: this, charge: chargeTime, damage: clawDamage, snapSpeed: clawSpeed * 3f, snapDuration: 1f, 
+        attackState = new AttackState(arm: this, charge: chargeTime, damage: clawDamage, snapSpeed: clawSpeed * 3f, snapDuration: coolDownTime, 
             chargeClawPosition: idlePosition * 0.75f, chargeClawSpeed: clawSpeed * 2f, clawSize);
         deadState = new DeadState(this);
         
@@ -68,6 +68,10 @@ public class MimicArm : MonoBehaviour
 
     void DetermineState()
     {
+        if (stateMachine.CompareType(deadState))
+            return;
+        
+        
         if (mimicAI.PlayerInSight)
         {
             timeSinceSightExit = 0f;
@@ -309,9 +313,9 @@ public class MimicArm : MonoBehaviour
         {
             var player = GM.PlayerInstance;
             player.GetComponent<PlayerStats>().TakeDamage(damage);
-            player.GetComponent<PlayerStats>().ApplyDebuff(PlayerStats.debuffs.slowed, 0.5f);
+            player.GetComponent<PlayerStats>().ApplyDebuff(PlayerStats.debuffs.slowed, 1f);
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            player.GetComponent<PlayerMovement>().walkSpeed *= 0.5f;
+            //player.GetComponent<PlayerMovement>().walkSpeed *= 0.5f;
         }
         
         public void Update()
@@ -344,7 +348,7 @@ public class MimicArm : MonoBehaviour
         
         public void Enter()
         {
-            arm.clawTransform.AddComponent<Rigidbody2D>().simulated = true;
+            var rb = arm.clawTransform.GetComponent<Rigidbody2D>();
             arm.clawTransform.GetComponent<PolygonCollider2D>().enabled = true;
         }
 
