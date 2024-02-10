@@ -37,10 +37,11 @@ public class MimicArm : MonoBehaviour
     public float chargeTime, coolDownTime;
     public float clawDamage;
     public float clawSize;
+    public float rageCoolDownMultiplier;
     
-    private IdleState idleState;
-    private AttackState attackState;
-    private DeadState deadState;
+    public IdleState idleState;
+    public AttackState attackState;
+    public DeadState deadState;
 
     private MimicAudio mimicAudio;
 
@@ -170,7 +171,7 @@ public class MimicArm : MonoBehaviour
         stateMachine.ChangeState(deadState);
     }
     
-    private class IdleState : IState
+    public class IdleState : IState
     {
         private MimicArm arm;
         private readonly Vector3 idleClawPosition;
@@ -211,7 +212,7 @@ public class MimicArm : MonoBehaviour
         }
     }
 
-    private class AttackState : IState
+    public class AttackState : IState
     {
         private MimicArm arm;
         private MimicAI ai;
@@ -317,6 +318,12 @@ public class MimicArm : MonoBehaviour
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             //player.GetComponent<PlayerMovement>().walkSpeed *= 0.5f;
         }
+
+        public void Rage()
+        {
+            charge *= arm.rageCoolDownMultiplier;
+            snapDuration *= arm.rageCoolDownMultiplier;
+        }
         
         public void Update()
         {
@@ -338,7 +345,7 @@ public class MimicArm : MonoBehaviour
         }
     }
 
-    private class DeadState : IState
+    public class DeadState : IState
     {
         private MimicArm arm;
         public DeadState(MimicArm arm)

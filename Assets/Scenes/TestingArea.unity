@@ -60334,6 +60334,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1503719256444052129, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: stats.maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1721554121334952784, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: m_Layer
       value: 12
@@ -60398,6 +60402,10 @@ PrefabInstance:
       propertyPath: coolDownTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5374067890409505551, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: rageCoolDownMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5716501317441812837, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -60417,6 +60425,10 @@ PrefabInstance:
     - target: {fileID: 6146107269340821662, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: smallLegChance
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146107269340821662, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: rageHealthRatio
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6146107269340821662, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: chaseState.timeOut
@@ -60962,6 +60974,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958255454508217124, guid: 39b161a7313c9674abfb1dae62809cb2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954607115095486137, guid: 39b161a7313c9674abfb1dae62809cb2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

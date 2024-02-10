@@ -154,6 +154,8 @@ public class MimicAI : MonoBehaviour
     public SearchState searchState;
     public DeadState deadState;
 
+    [Range(0f, 1f)] public float rageHealthRatio;
+
 
     public Vector3 destination;
     private Vector3 target;
@@ -222,6 +224,7 @@ public class MimicAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        HandleStats();
         stateMachine.Update();
         LegsBehaviour();
         
@@ -231,6 +234,18 @@ public class MimicAI : MonoBehaviour
         EyeBehaviour();
         Sight();
         gizmo.position = destination;
+    }
+
+    private bool rageFlag = false;
+    void HandleStats()
+    {
+        if (stats.health <= stats.maxHealth * rageHealthRatio && !rageFlag)
+        {
+            rageFlag = true;
+            GetComponent<MimicArm>().attackState.Rage();
+            mimicAudio.PlayAlertSFX();
+            pupil.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
     }
 
     void PlayerSightEnter()

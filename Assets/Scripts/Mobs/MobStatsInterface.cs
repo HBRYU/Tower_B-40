@@ -8,7 +8,7 @@ public class MobStats
 {
     public string id;
     public bool Dead { get; private set; }
-    public float health;
+    public float health, maxHealth;
     public Action deathAction, takeDamageAction;
 
     public MobStats(string id, float health)
