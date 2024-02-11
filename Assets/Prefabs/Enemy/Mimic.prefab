@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1552304689979715473}
+  - component: {fileID: 2259153214153223272}
+  - component: {fileID: 7939046855975437444}
   m_Layer: 12
   m_Name: Claw
   m_TagString: Untagged
@@ -34,6 +36,84 @@ Transform:
   - {fileID: 7817795918535272636}
   m_Father: {fileID: 5109401839988099730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &2259153214153223272
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470328086787841414}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.73187447, y: 0.63176256}
+      - {x: -0.23299319, y: 0.00061801076}
+      - {x: -0.75473976, y: -0.6220776}
+      - {x: -0.15510505, y: -0.73076665}
+      - {x: 2.240251, y: 0.010311127}
+      - {x: -0.17667103, y: 0.72328424}
+  m_UseDelaunayMesh: 0
+--- !u!50 &7939046855975437444
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470328086787841414}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &633057459366337831
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8133887081807359393}
   - component: {fileID: 2059480193437987714}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mimic Claw 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,8 +567,10 @@ GameObject:
   - component: {fileID: 6146107269340821662}
   - component: {fileID: 1503719256444052129}
   - component: {fileID: 5374067890409505551}
+  - component: {fileID: 2989760320570182632}
   - component: {fileID: 3672715958812506259}
   - component: {fileID: 1797177413002781346}
+  - component: {fileID: 6289829497369389919}
   m_Layer: 12
   m_Name: Mimic
   m_TagString: Mimic
@@ -595,10 +677,10 @@ MonoBehaviour:
   headSprite: {fileID: 3460731397430640318}
   eye: {fileID: 6379643261041460399}
   pupil: {fileID: 2570227701665058366}
-  numLegs: 10
+  numLegs: 12
   smallLegObj: {fileID: 3345541700139170738, guid: e6fe3b08f1f34f340ad2f28870a219d3, type: 3}
   legObj: {fileID: 7598755919592299769, guid: c21c8d6e22e0aef419e422bb521ae87a, type: 3}
-  smallLegChance: 0.3
+  smallLegChance: 0.2
   legSpawnArea: 2
   smallLegForce: 24
   legForce: 48
@@ -611,10 +693,11 @@ MonoBehaviour:
     stasisClockMin: 0.5
     timeOut: 6
   chaseState:
-    timeOut: 20
+    timeOut: 10
     playerPosHistory: []
     timeSinceSightExit: 0
     finalPlayerSighting: {x: 0, y: 0, z: 0}
+  rageHealthRatio: 0.25
   destination: {x: 0, y: 0, z: 0}
   sensorLayers:
     serializedVersion: 2
@@ -622,7 +705,7 @@ MonoBehaviour:
   moveVars:
     refreshPathClock: 0.25
     refreshPathClockTimer: 0
-    setLegTargetClock: 0.1
+    setLegTargetClock: 0.075
     setLegTargetClockTimer: 0
 --- !u!114 &1503719256444052129
 MonoBehaviour:
@@ -639,6 +722,7 @@ MonoBehaviour:
   stats:
     id: Mimic
     health: 200
+    maxHealth: 200
 --- !u!114 &5374067890409505551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,9 +749,35 @@ MonoBehaviour:
   line1: {fileID: 3672715958812506259}
   line2: {fileID: 2753219040885521300}
   limbLength: 4
-  chargeTime: 1
+  chargeTime: 0.5
+  coolDownTime: 0.5
   clawDamage: 30
   clawSize: 1.2
+  rageCoolDownMultiplier: 0.5
+--- !u!114 &2989760320570182632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2311074748414079071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f6bea5dbcb84d4eba1649ce7d5e1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alertSFX: {fileID: 8300000, guid: 9dfce7731a6a24646b112d87f47d306b, type: 3}
+  searchSFX: {fileID: 8300000, guid: 9a4ebdc1f3724ef41a5e20fbd24b15e1, type: 3}
+  warningSFX: {fileID: 8300000, guid: e86a1c8fffa2fc2428a5cb5a58f1dcdc, type: 3}
+  slashSFX: {fileID: 8300000, guid: 6a6b8f973bc802f4e8678d8dc316991b, type: 3}
+  releaseSFX: {fileID: 8300000, guid: 5624a7ab5444f234ab76cb07e59c54bb, type: 3}
+  legMoveSFX:
+  - {fileID: 8300000, guid: a92c4cd22ef02a849b0366a2148adb94, type: 3}
+  - {fileID: 8300000, guid: 2912c1b3317f36f489a1260bfe74a20d, type: 3}
+  legSFX:
+  - {fileID: 8300000, guid: df999ae7ffb9a6e468b01e74b958b679, type: 3}
+  - {fileID: 8300000, guid: 499ab47ce00082947b65eb23212b03e8, type: 3}
+  - {fileID: 8300000, guid: 9d9f0f991cdeb6649924b6eed60c1c86, type: 3}
 --- !u!120 &3672715958812506259
 LineRenderer:
   serializedVersion: 2
@@ -793,6 +903,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &6289829497369389919
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2311074748414079071}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 38d9a6a5ff42a364fa80f3005d3035fc, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 0.5
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.7
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2812889126735499257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1388,7 @@ GameObject:
   - component: {fileID: 3021884647879301038}
   - component: {fileID: 3672998892309705161}
   - component: {fileID: 2753219040885521300}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1551,7 +1757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5714304000083623358}
   - component: {fileID: 2484842899916966434}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mimic Claw 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

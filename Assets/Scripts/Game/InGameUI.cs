@@ -191,6 +191,8 @@ public class InGameUI : MonoBehaviour
 
         [SerializeField] private float setTimeScale;
 
+        private Vector2 prevMousePosition;
+
         public SkillCanvasState(GameObject panel)
         {
             this.panel = panel;
@@ -209,11 +211,19 @@ public class InGameUI : MonoBehaviour
             activeTileIndexes = new List<int>();
             panel.SetActive(true);
             GM.Instance.physicsSpeedMutlitplier = setTimeScale;
+            prevMousePosition = Input.mousePosition;
         }
 
         public void Update()
         {
             Vector2 mouseScreenPos = Input.mousePosition;
+            int cap = 8;
+            List<Vector2> mouseInbetweenPositions = new List<Vector2>(cap);
+            for (int i = 1; i <= cap; i++)
+            {
+                mouseInbetweenPositions.Add(prevMousePosition + i*(mouseScreenPos - prevMousePosition)/cap);
+            }
+            prevMousePosition = mouseScreenPos;
 
             if (Input.GetMouseButtonDown(0))
                 activeTileIndexes = new List<int>();

@@ -71,8 +71,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1730684239
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Time: 0.1
   m_PreviewTimeScale: 1
@@ -161,6 +161,8 @@ GameObject:
   - component: {fileID: 4218229766908897472}
   - component: {fileID: 6391438851572828633}
   - component: {fileID: 7450456520598219193}
+  - component: {fileID: 104235228865014646}
+  - component: {fileID: 2714457045842390767}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -337,7 +339,7 @@ MonoBehaviour:
   jumpSpeed: 12
   groundLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4224
   feetPosition: {fileID: 5930096234693408492}
   facingRight: 0
   sprite: {fileID: 1628537858267366252}
@@ -378,11 +380,48 @@ MonoBehaviour:
   wing2Offset: {x: -0.25, y: 0.5, z: 0}
   damage: 12
   cooldown: 2
+  velocityDamageMultiplier: 0.75
+  maxVelocityDamage: 5
   collisionLayers:
     serializedVersion: 2
     m_Bits: 8192
   wing1TrailRenderer: {fileID: 7777406868355104613}
   wing2TrailRenderer: {fileID: 185871615937939215}
+--- !u!114 &104235228865014646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765354152505107203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc279b519630ee48aad7d9da6756d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSFX: {fileID: 8300000, guid: 46194bd31f46e29448d58d7233febc2c, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 2de043c0fca020a4ba62a357198531b2, type: 3}
+  landSFX: {fileID: 8300000, guid: 1073b9a2f3d6bcb46ae636bb986beadf, type: 3}
+  dashSFX: {fileID: 8300000, guid: 850a5be30c9aff94c82eb37f3a0977ac, type: 3}
+--- !u!114 &2714457045842390767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765354152505107203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56f7788468a7ac4c95b9469287bc52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourcesSine: []
+  audioSourcesSaw: []
+  wingHitSFX: {fileID: 8300000, guid: 0de52c9191486464b93461b605212def, type: 3}
+  sine: {fileID: 8300000, guid: ed4f8ec4ffa5a7741ba480bf47a473a9, type: 3}
+  saw: {fileID: 8300000, guid: 9ab23a8916a0469418f00ace5a84f721, type: 3}
+  velocityCap: 150
+  velocitySmoothing: 0.8
 --- !u!1 &4939335412662515802
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,8 +493,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1730684239
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1430315553, guid: be68e0e3f16e2ef458bdccdf56f6f544, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -560,8 +599,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1730684239
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Time: 0.1
   m_PreviewTimeScale: 1

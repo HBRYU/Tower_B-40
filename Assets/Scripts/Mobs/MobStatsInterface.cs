@@ -20,6 +20,8 @@ public class MobStats
     
     public void TakeDamage(float damage)
     {
+        if (Dead)
+            return;
         health -= damage;
         if (health <= 0f)
         {

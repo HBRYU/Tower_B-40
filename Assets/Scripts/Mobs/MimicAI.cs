@@ -128,7 +128,7 @@ public class MimicAI : MonoBehaviour
 
     public bool FacingRight { get; private set; }
 
-    public Transform gizmo;
+    //public Transform gizmo;
 
     [Header("Head")]
     [SerializeField] private Transform head;
@@ -233,7 +233,7 @@ public class MimicAI : MonoBehaviour
         HeadBehaviour();
         EyeBehaviour();
         Sight();
-        gizmo.position = destination;
+        //gizmo.position = destination;
     }
 
     private bool rageFlag = false;
@@ -976,7 +976,6 @@ public class MimicAI : MonoBehaviour
     
     void Die()
     {
-        //Destroy(gameObject);
         stateMachine.ChangeState(deadState);
         GetComponent<MimicArm>().Die();
     }
@@ -984,5 +983,7 @@ public class MimicAI : MonoBehaviour
     void TakeDamage()
     {
         GetComponent<Animator>().SetTrigger("TakeDamage");
+        ProbablePlayerPos = GM.GetPlayerPosition();
+        stateMachine.ChangeStateIfNot(chaseState);
     }
 }

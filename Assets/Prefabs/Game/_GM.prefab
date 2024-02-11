@@ -84,6 +84,9 @@ MonoBehaviour:
   parentFolder: {fileID: 0}
   parallaxZMultiplier: 0.015
   xOnly: 1
+  zTintMultiplier: 0
+  applyColor: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &751141851061895842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +102,9 @@ MonoBehaviour:
   parentFolder: {fileID: 0}
   parallaxZMultiplier: 0.01
   xOnly: 1
+  zTintMultiplier: 0
+  applyColor: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &5133283178908991432
 MonoBehaviour:
   m_ObjectHideFlags: 0
