@@ -203,6 +203,7 @@ public class PlayerWing
             coolingDown = false;
             cooldownTimer = cooldown;
             state = PlayerWingState.idle;
+            GM.InGameUIInstance.SetWingColor(right, Color.cyan);
         }
     }
 

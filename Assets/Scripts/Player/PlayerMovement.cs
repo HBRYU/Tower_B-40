@@ -388,6 +388,7 @@ public class PlayerMovement : MonoBehaviour
         facingRight = !sprite.flipX;
     }
 
+    private bool dashAvailableFlag = false;
     private void HandleDash()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -413,6 +414,16 @@ public class PlayerMovement : MonoBehaviour
             dashCooldownTimer -= Time.deltaTime;
 
         
+        //UI
+        float fill = dashCooldownTimer > 0f ? (dashCooldown - dashCooldownTimer) / dashCooldown : 1f;
+        GM.InGameUIInstance.SetDashFill(fill);
+        if (!dashAvailableFlag && dashCooldownTimer < 0f)
+        {
+            dashAvailableFlag = true;
+            GM.InGameUIInstance.SetDashColor(Color.cyan);
+        }
+        
+        
         void Dash()
         {
             rb.MovePosition(targetDashPos);
@@ -426,6 +437,8 @@ public class PlayerMovement : MonoBehaviour
             onGroundTimer = 0f;
             
             playerAudio.PlayDashSFX();
+
+            dashAvailableFlag = false;
         }
     }
 

@@ -17,6 +17,8 @@ public class InGameUI : MonoBehaviour
     private Image healthBarFill;
     public Image lmbWing, rmbWing, dash;
 
+    private const int WingFillSteps = 5, DashFillSteps = 5;
+
     private Color basicColor;  // Basic color for most UI elements : RGBA 1, 1, 1, 100/255
     
     void Start()
@@ -35,6 +37,8 @@ public class InGameUI : MonoBehaviour
         state.Update();
         HandleDisabledStates();
         HandleHealthBar();
+        HandleWings();
+        HandleDash();
     }
 
     void HandleDisabledStates()
@@ -62,6 +66,19 @@ public class InGameUI : MonoBehaviour
         healthBarFill.color = Color.Lerp(healthBarFill.color, Color.white, speed1 * Time.deltaTime);
         healthBar.color = Color.Lerp(healthBar.color, basicColor, speed2 * Time.deltaTime);
     }
+
+    void HandleWings()
+    {
+        float speed = 1f;
+        lmbWing.color = Color.Lerp(lmbWing.color, basicColor, speed * Time.deltaTime);
+        rmbWing.color = Color.Lerp(rmbWing.color, basicColor, speed * Time.deltaTime);
+    }
+
+    void HandleDash()
+    {
+        float speed = 1f;
+        dash.color = Color.Lerp(dash.color, basicColor, speed * Time.deltaTime);
+    }
     
     // Public Methods
     public void TakeDamage()
@@ -72,13 +89,15 @@ public class InGameUI : MonoBehaviour
 
     public void SetWingFill(bool right, float fill)
     {
+        float fillAmount = fill < 1f ? fill - fill%(1f/WingFillSteps) : 1f;
+        
         if (right)
         {
-            rmbWing.fillAmount = fill;
+            rmbWing.fillAmount = fillAmount;
         }
         else
         {
-            lmbWing.fillAmount = fill;
+            lmbWing.fillAmount = fillAmount;
         }
     }
 
@@ -92,6 +111,16 @@ public class InGameUI : MonoBehaviour
         {
             lmbWing.color = color;
         }
+    }
+
+    public void SetDashFill(float fill)
+    {
+        dash.fillAmount = fill < 1f ? fill - fill%(1f/DashFillSteps) : 1f;
+    }
+
+    public void SetDashColor(Color color)
+    {
+        dash.color = color;
     }
 
     [Serializable]
