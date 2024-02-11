@@ -27,6 +27,8 @@ public class PlayerStats : MonoBehaviour
         
         playerAnimation.RequestAnimation("TakeDamage", "Trigger");
         
+        GM.InGameUIInstance.TakeDamage();
+        
         if (health <= 0f)
         {
             // Die

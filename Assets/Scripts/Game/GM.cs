@@ -11,6 +11,7 @@ public class GM : MonoBehaviour
     public static GameObject PlayerInstance { get; private set; }
     [SerializeField] private PFManager pfManager;
     [SerializeField] private AudioManager audioManager;
+    public static InGameUI InGameUIInstance { get; private set; }
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class GM : MonoBehaviour
 
         PlayerInstance = GetPlayer();
         pfManager = GetComponent<PFManager>();
+        InGameUIInstance = GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUI>();
     }
 
 

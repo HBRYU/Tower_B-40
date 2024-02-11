@@ -8,22 +8,37 @@ public class InGameUI : MonoBehaviour
 {
     public StateMachine state = new StateMachine();
 
+    private PlayerStats playerStats;
+
     public BasicState basicState;
     public SkillCanvasState skillCanvasState;
 
-    public Queue<IState> stateQueue = new Queue<IState>();
+    public Image healthBar;
+    private Image healthBarFill;
+    public Image lmbWing, rmbWing, dash;
+
+    private Color basicColor;  // Basic color for most UI elements : RGBA 1, 1, 1, 100/255
     
     void Start()
     {
         state.ChangeState(basicState);
         basicState.Initialize(this);
         skillCanvasState.Initialize(this);
+
+        playerStats = GM.GetPlayer().GetComponent<PlayerStats>();
+        healthBarFill = healthBar.rectTransform.GetChild(0).GetComponent<Image>();
+        basicColor = healthBar.color;
     }
 
     void Update()
     {
         state.Update();
+        HandleDisabledStates();
+        HandleHealthBar();
+    }
 
+    void HandleDisabledStates()
+    {
         if (!state.CompareType(basicState))
         {
             basicState.Disabled();
@@ -32,6 +47,50 @@ public class InGameUI : MonoBehaviour
         if (!state.CompareType(skillCanvasState))
         {
             skillCanvasState.Disabled();
+        }
+    }
+
+    void HandleHealthBar()
+    {
+        float hp = playerStats.health;
+        float maxHp = playerStats.maxHealth;
+
+        healthBarFill.fillAmount = hp / maxHp;
+        
+        // I'm too lazy to make animations for each UI element so I'm gonna hard-code them in. lol
+        float speed1 = 0.5f, speed2 = 1f;
+        healthBarFill.color = Color.Lerp(healthBarFill.color, Color.white, speed1 * Time.deltaTime);
+        healthBar.color = Color.Lerp(healthBar.color, basicColor, speed2 * Time.deltaTime);
+    }
+    
+    // Public Methods
+    public void TakeDamage()
+    {
+        healthBarFill.color = Color.red;
+        healthBar.color = new Color(1, 0, 0, 100f / 255f);
+    }
+
+    public void SetWingFill(bool right, float fill)
+    {
+        if (right)
+        {
+            rmbWing.fillAmount = fill;
+        }
+        else
+        {
+            lmbWing.fillAmount = fill;
+        }
+    }
+
+    public void SetWingColor(bool right, Color color)
+    {
+        if (right)
+        {
+            rmbWing.color = color;
+        }
+        else
+        {
+            lmbWing.color = color;
         }
     }
 
