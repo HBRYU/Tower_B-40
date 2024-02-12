@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b1f8be73757e938499004064e338c193
+guid: 5cdb9e6e7846cc24c89321921e9e74b7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,6 +81,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -110,49 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skill_Pierce-Sheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 20f1ce6f9d7f6f04db2186be3bc3cc80
-      internalID: -1316258911
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skill_Pierce-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdb9f7fb998afb04d905606c8fac461d
-      internalID: 1859568324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skill_Pierce-Sheet_2
+      name: Skill_Pierce-Sheet-Body_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04d7e675b00293c4e81e3fa70f610185
-      internalID: 400666301
+      spriteID: d9fd97541c1ea7d4a968b20a7cd5580e
+      internalID: -1434063075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skill_Pierce-Sheet_3
+      name: Skill_Pierce-Sheet-Body_1
       rect:
         serializedVersion: 2
         x: 48
@@ -187,8 +158,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 994f234acf79e3140a238a14bab6d92c
-      internalID: -1752130902
+      spriteID: 7948941497c59ee4b9c63a8ee2a6218c
+      internalID: 1947478355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_Pierce-Sheet-Body_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07dc721a1136c2f44b282d93cbb9a812
+      internalID: -494996103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_Pierce-Sheet-Body_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839c2b5b6ef08de49a0b05b32586408c
+      internalID: -1809524335
       vertices: []
       indices: 
       edges: []
@@ -204,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skill_Pierce-Sheet_0: -1316258911
-      Skill_Pierce-Sheet_1: 1859568324
-      Skill_Pierce-Sheet_2: 400666301
-      Skill_Pierce-Sheet_3: -1752130902
+      Skill_Pierce-Sheet-Body_0: -1434063075
+      Skill_Pierce-Sheet-Body_1: 1947478355
+      Skill_Pierce-Sheet-Body_2: -494996103
+      Skill_Pierce-Sheet-Body_3: -1809524335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

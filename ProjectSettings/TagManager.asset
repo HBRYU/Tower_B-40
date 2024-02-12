@@ -9,6 +9,7 @@ TagManager:
   - Target
   - Mimic
   - InGameUI
+  - PlayerSprite
   layers:
   - Default
   - TransparentFX

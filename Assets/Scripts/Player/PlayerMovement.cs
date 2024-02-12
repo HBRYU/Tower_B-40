@@ -246,6 +246,8 @@ public class PlayerMovement : MonoBehaviour
     private bool usingMoveAccel;
     private bool playingWalkSFX = false;
 
+    [HideInInspector] public bool overrideMovement;
+
     void Start()
     {
         InitializeComponents();
@@ -254,12 +256,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (overrideMovement)
+            return;
         Move();
         FlipSpritesByMovement();
     }
 
     void Update()
     {
+        if (overrideMovement)
+            return;
         HandleUseInputX();
         Jump();
         HandleDash();
@@ -447,5 +453,11 @@ public class PlayerMovement : MonoBehaviour
         if (playerAnimation == null)
             return;
         playerAnimation.RequestAnimation(param, value);
+    }
+
+    public void FaceDirection(bool right)
+    {
+        facingRight = right;
+        sprite.flipX = !right;
     }
 }

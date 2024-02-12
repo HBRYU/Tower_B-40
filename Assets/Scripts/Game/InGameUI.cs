@@ -193,6 +193,8 @@ public class InGameUI : MonoBehaviour
 
         private Vector2 prevMousePosition;
 
+        private PlayerSkillManager playerSkillManager;
+
         public SkillCanvasState(GameObject panel)
         {
             this.panel = panel;
@@ -204,6 +206,7 @@ public class InGameUI : MonoBehaviour
             animator = inGameUI.GetComponent<Animator>();
             tileImages = tiles.Select(t => t.GetComponent<Image>()).ToArray();
             disabledTileColor = tileImages[0].color;
+            playerSkillManager = GM.PlayerInstance.GetComponent<PlayerSkillManager>();
         }
 
         public void Enter()
@@ -217,7 +220,8 @@ public class InGameUI : MonoBehaviour
         public void Update()
         {
             Vector2 mouseScreenPos = Input.mousePosition;
-            int cap = 8;
+            int cap = 16;
+            // Check for each position interpolated between frames to increase accuracy
             List<Vector2> mouseInbetweenPositions = new List<Vector2>(cap);
             for (int i = 1; i <= cap; i++)
             {
@@ -232,19 +236,22 @@ public class InGameUI : MonoBehaviour
             {
                 var tile = tiles[i];
 
-                if (mouseScreenPos.x > Screen.width / 2 + tile.anchoredPosition.x - TileSize / 2f
-                    && mouseScreenPos.x < Screen.width / 2 + tile.anchoredPosition.x + TileSize / 2f
-                    && mouseScreenPos.y > Screen.height / 2 + tile.anchoredPosition.y - TileSize / 2f
-                    && mouseScreenPos.y < Screen.height / 2 + tile.anchoredPosition.y + TileSize / 2f
-                    && Input.GetMouseButton(0))
+                foreach (var pos in mouseInbetweenPositions)
                 {
-                    // Activate tile
-                    if (!activeTileIndexes.Contains(i))
+                    if (pos.x > Screen.width / 2 + tile.anchoredPosition.x - TileSize / 2f
+                        && pos.x < Screen.width / 2 + tile.anchoredPosition.x + TileSize / 2f
+                        && pos.y > Screen.height / 2 + tile.anchoredPosition.y - TileSize / 2f
+                        && pos.y < Screen.height / 2 + tile.anchoredPosition.y + TileSize / 2f
+                        && Input.GetMouseButton(0))
                     {
-                        activeTileIndexes.Add(i);
+                        // Activate tile
+                        if (!activeTileIndexes.Contains(i))
+                        {
+                            activeTileIndexes.Add(i);
+                        }
                     }
                 }
-
+                
                 
                 if (activeTileIndexes.Contains(i) && Input.GetKey(KeyCode.Space))
                 {
@@ -269,8 +276,7 @@ public class InGameUI : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0) && activeTileIndexes.Count > 0)
             {
-                print("Skill Triggered: " + activeTileIndexes.Count);
-                activeTileIndexes = new List<int>();
+                TriggerSkill();
             }
 
             // Handle line renderer
@@ -289,13 +295,17 @@ public class InGameUI : MonoBehaviour
             {
                 if (activeTileIndexes.Count > 0)
                 {
-                    print("Skill Triggered: " + activeTileIndexes.Count);
-                    activeTileIndexes = new List<int>();
+                    TriggerSkill();
                 }
                 animator.SetTrigger("OnSpaceRelease");
             }
+        }
 
-            
+        void TriggerSkill()
+        {
+            print("Skill Triggered: " + activeTileIndexes.Count);
+            playerSkillManager.TriggerSkill(activeTileIndexes);
+            activeTileIndexes = new List<int>();
         }
 
         public void Exit()

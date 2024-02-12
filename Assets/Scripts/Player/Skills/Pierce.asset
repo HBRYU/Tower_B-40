@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbb1d748fd14474faa3fd4b0f994cce, type: 3}
+  m_Name: Pierce
+  m_EditorClassIdentifier: 
+  skillName: Pierce
+  energyCost: 20
+  overrideMovement: 1
+  overrideWings: 1
+  activationAudio: {fileID: 0}
+  animationObject: {fileID: 3743924504873526776, guid: daa6204a1d7950140beb0602f1ba3c21, type: 3}
+  distance: 10
+  speed: 100
+  activationTime: 0.05
+  wallLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  targetHitboxLayers:
+    serializedVersion: 2
+    m_Bits: 8192
+  damage: 50
