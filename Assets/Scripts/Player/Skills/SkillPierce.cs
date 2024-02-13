@@ -91,6 +91,7 @@ namespace Player.Skills
         {
             playerMovement.overrideMovement = false;
             rb.simulated = true;
+            rb.velocity = Vector2.zero;
             sr.enabled = true;
             damageDealt = false;
             activationTimeTimer = activationTime;
