@@ -9,17 +9,15 @@ public class PlayerSkillManager : MonoBehaviour
 
     public void TriggerSkill(List<int> indexes)
     {
-        
-        //Null ref what the fuck
         GlobalSkillManager.SkillStatus skillStatus = GlobalSkillManager.SkillStatusList.Find(
-            ss => !ss.Equals(default(GlobalSkillManager.SkillStatus)) && ss.unlocked && ss.skill.ActivationPattern(indexes));
+            ss => ss.unlocked && ss.skill.ActivationPattern(indexes));
         
-        if (skillStatus.Equals(default(GlobalSkillManager.SkillStatus)))
+        if (skillStatus == null)
         {
             print("Skill issue :P");
             return;
         }
-
+        
         var skill = skillStatus.skill;
         if (activeSkills.Contains(skill))
         {
@@ -28,6 +26,7 @@ public class PlayerSkillManager : MonoBehaviour
         }
         skill.Activate(gameObject);
         activeSkills.Add(skill);
+        
     }
 
     void Update()

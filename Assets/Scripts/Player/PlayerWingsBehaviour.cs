@@ -55,6 +55,10 @@ public class PlayerWing
     public float Velocity { get; private set; }
 
     private PlayerWingsAudio wingsAudio;
+
+    private bool hidden = false;
+    public bool overrideWing = false;
+    public float width = 0.1f;
     
     public PlayerWing(bool right, float damage, GameObject meshObject, Material material, Material cooldownMaterial, Vector3 idlePosition,
         float speed, float range, float travelDistanceCoeff, float cooldown, LayerMask collisionLayers)
@@ -226,7 +230,7 @@ public class PlayerWing
                 : (mousePosition - playerTransform.position + position).normalized);
         
         Vector3 pos1, pos2, pos3;
-        float width = 0.1f;
+        
         pos1 = vertices[2];
         pos2 = vertices[1];
         pos3 = vertices[0];
@@ -309,8 +313,38 @@ public class PlayerWing
             GM.InGameUIInstance.SetWingFill(right, 1);
     }
 
+    public void Hide(bool value)
+    {
+        hidden = value;
+    }
+
+    public void SetVertices(List<Vector3> vertices)
+    {
+        this.vertices = vertices;
+    }
+
+    public void Disable(bool value)
+    {
+        if (value)
+        {
+            Hide(true);
+            SetVertices(new List<Vector3>(){ Vector3.zero, Vector3.zero, Vector3.zero});
+            overrideWing = true;
+        }
+        else
+        {
+            Hide(false);
+            overrideWing = false;
+        }
+    }
+
     public void Update()
     {
+        if (overrideWing)
+        {
+            return;
+        }
+        
         if (state != PlayerWingState.cooldown)
         {
             state = Input.GetMouseButton(inputMouseButton) ? PlayerWingState.followMouse : PlayerWingState.idle;
@@ -321,6 +355,12 @@ public class PlayerWing
 
     public void FixedUpdate()
     {
+        if (overrideWing)
+        {
+            DrawMesh();
+            return;
+        }
+        
         trailRenderer.enabled = false;
         
         switch (state)

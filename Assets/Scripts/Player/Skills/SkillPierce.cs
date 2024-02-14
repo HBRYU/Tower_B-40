@@ -15,7 +15,7 @@ namespace Player.Skills
         public float distance, speed;
         public float activationTime;
         private float activationTimeTimer;
-        public LayerMask wallLayers, targetHitboxLayers;
+        public LayerMask wallLayers, targetHitboxLayers, phaseThroughLayers;
         public float damage;
         private bool damageDealt = false;
 
@@ -28,6 +28,13 @@ namespace Player.Skills
 
         private Transform transform;
         private Vector2 startPoint, endPoint;
+
+        private CapsuleCollider2D playerCollider;
+        public Vector2 setPlayerColliderSize;
+        private Vector2 initialColliderSize;
+
+        private List<PlayerWing> wings;
+        private float initialWingsWidth;
     
         public override bool ActivationPattern(List<int> indexes)
         {
@@ -52,7 +59,8 @@ namespace Player.Skills
         public override void Activate(GameObject playerObject)
         {
             InitializeVariables(playerObject);
-
+            
+            rb.velocity = Vector2.zero;
             playerMovement.overrideMovement = true;
             playerMovement.FaceDirection(right);
             animationObjectInstance.GetComponent<SpriteRenderer>().flipX = !right;
@@ -67,11 +75,12 @@ namespace Player.Skills
             else
                 endPoint = (Vector2)transform.position + direction * distance;
 
-            rb.simulated = false;
+            rb.gravityScale = 0f;
             sr.enabled = false;
+            playerCollider.size = setPlayerColliderSize;
+            SetPhaseLayers(true);
 
             activationTimeTimer = activationTime;
-
         }
         
         public override void Update()
@@ -90,13 +99,14 @@ namespace Player.Skills
         public override void Deactivate()
         {
             playerMovement.overrideMovement = false;
-            rb.simulated = true;
-            rb.velocity = Vector2.zero;
+            rb.gravityScale = 1f;
             sr.enabled = true;
             damageDealt = false;
             activationTimeTimer = activationTime;
+            SetPhaseLayers(false);
             Destroy(animationObjectInstance);
             playerSkillManager.DeactivateSkill(this);
+            endFlag = false;
         }
 
         void InitializeVariables(GameObject playerObject)
@@ -109,20 +119,62 @@ namespace Player.Skills
             animationObjectInstance = Instantiate(animationObject, transform.position, Quaternion.identity, transform);
             animator = animationObjectInstance.GetComponent<Animator>();
             animationObjectInstance.GetComponent<AnimationObjectInterface>().endAction = Deactivate;
+            playerCollider = playerObject.GetComponent<CapsuleCollider2D>();
+            initialColliderSize = playerCollider.size;
+            var wingsBehavioour = playerObject.GetComponent<PlayerWingsBehaviour>();
+            wings = new List<PlayerWing>(2) { wingsBehavioour.wing1, wingsBehavioour.wing2 };
+            initialWingsWidth = wings[0].width;
+            
+            foreach (var wing in wings)
+            {
+                wing.overrideWing = true;
+                var vertices = new List<Vector3>(3)
+                {
+                    new (-1f, 0f, 0f),
+                    Vector3.zero,
+                    new (1f, 0f, 0f)
+                };
+                wing.SetVertices(vertices);
+            }
+
+            moveClock = 0f;
         }
 
+        private float moveClock;
+        private bool endFlag;
         void Move()
         {
-            if (speed * Time.deltaTime > Mathf.Abs(endPoint.x - transform.position.x))
+            moveClock += Time.deltaTime;
+            if ((speed * Time.deltaTime > Mathf.Abs(endPoint.x - transform.position.x) || speed * moveClock > distance) && !endFlag)
             {
-                transform.position = endPoint;
+                endFlag = true;
+                rb.MovePosition(endPoint);
+                playerCollider.size = initialColliderSize;
                 if(!damageDealt)
                     HandleDamage();
                 animator.SetTrigger("End");
+                rb.velocity = Vector2.zero;
+                
+                foreach (var wing in wings)
+                {
+                    wing.width = initialWingsWidth;
+                    Debug.Log(initialWingsWidth);
+                    wing.overrideWing = false;
+                }
             }
-            else
+            else if (!endFlag)
             {
-                transform.position += (Vector3)direction * (speed * Time.deltaTime);
+                foreach (var wing in wings)
+                {
+                    wing.width = 0.3f;
+                    var vertices = new List<Vector3>(3)
+                    {
+                        new (-2f, 0f, 0f),
+                        Vector3.zero,
+                        new (2f, 0f, 0f)
+                    };
+                    wing.SetVertices(vertices);
+                }
             }
         }
 
@@ -142,6 +194,19 @@ namespace Player.Skills
             }
 
             damageDealt = true;
+        }
+
+        void SetPhaseLayers(bool value)
+        {
+            // GPT 4
+            for (int i = 0; i < 32; i++) // There are 32 layers in Unity (0-31)
+            {
+                if (((1 << i) & phaseThroughLayers) != 0)
+                {
+                    // This layer is in the LayerMask, so ignore collision with player layer
+                    Physics2D.IgnoreLayerCollision(GM.GetPlayer().layer, i, value);
+                }
+            }
         }
     }
 }
