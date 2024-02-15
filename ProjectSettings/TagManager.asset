@@ -10,6 +10,7 @@ TagManager:
   - Mimic
   - InGameUI
   - PlayerSprite
+  - AudioManager
   layers:
   - Default
   - TransparentFX

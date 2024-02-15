@@ -15,6 +15,13 @@ public class CameraFollowTarget : MonoBehaviour
     private Vector3 basePosition, aimedPosition;
     // Used for calculating aimedPosition.
     [SerializeField] private float sightDistanceCoeff;
+
+    void Start()
+    {
+        if (target == null)
+            target = GM.GetPlayer().transform;
+    }
+    
     void FixedUpdate()
     {
         basePosition = target.position + offset;

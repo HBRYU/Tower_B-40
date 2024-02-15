@@ -672,7 +672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1f8cb7d4502634d97c9bbfa22e34ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gizmo: {fileID: 0}
   head: {fileID: 4929461627950974840}
   headSprite: {fileID: 3460731397430640318}
   eye: {fileID: 6379643261041460399}

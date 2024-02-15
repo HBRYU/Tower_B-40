@@ -19,7 +19,7 @@ MonoBehaviour:
   activationAudio: {fileID: 0}
   animationObject: {fileID: 3743924504873526776, guid: daa6204a1d7950140beb0602f1ba3c21, type: 3}
   distance: 12
-  speed: 100
+  speed: 150
   activationTime: 0.05
   wallLayers:
     serializedVersion: 2

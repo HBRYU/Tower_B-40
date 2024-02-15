@@ -211,9 +211,9 @@ ScriptedImporter:
     - name: Skill_Pierce_Frame_0
       frameIndex: 0
       cellRect:
-        x: 17
+        x: 16
         y: 10
-        width: 16
+        width: 17
         height: 23
       spriteId: a7f8df03f422a024b9e90cc4fc0c3bee
     - name: Skill_Pierce_Frame_1
@@ -227,19 +227,43 @@ ScriptedImporter:
     - name: Skill_Pierce_Frame_2
       frameIndex: 2
       cellRect:
-        x: 19
-        y: 10
-        width: 16
-        height: 20
+        x: 8
+        y: 12
+        width: 28
+        height: 15
       spriteId: d79ab3586a1906e40a58a634116e0790
     - name: Skill_Pierce_Frame_3
       frameIndex: 3
       cellRect:
-        x: 19
+        x: 17
         y: 10
-        width: 16
+        width: 20
         height: 20
       spriteId: e17d4dc9a90c6304e89790b1d29b38f8
+    - name: Skill_Pierce_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 17
+        y: 10
+        width: 16
+        height: 21
+      spriteId: 230c25aff8db3424cbe2e45d2b610ff6
+    - name: Skill_Pierce_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 17
+        y: 10
+        width: 16
+        height: 23
+      spriteId: f4f5854f475fa414183246323edfc2fb
+    - name: Skill_Pierce_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 19
+        y: 10
+        width: 11
+        height: 25
+      spriteId: b6069db652180ff4ebb6b033cb7f7e78
     linkedCells: []
     parentIndex: -1
   platformSettings:

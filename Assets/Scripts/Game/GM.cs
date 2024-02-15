@@ -9,8 +9,8 @@ public class GM : MonoBehaviour
     // Singleton design pattern
     public static GM Instance { get; private set; }
     public static GameObject PlayerInstance { get; private set; }
-    [SerializeField] private PFManager pfManager;
-    [SerializeField] private AudioManager audioManager;
+    private PFManager pfManager;
+    private AudioManager audioManager;
     public static InGameUI InGameUIInstance { get; private set; }
 
     private void Awake()
@@ -25,6 +25,8 @@ public class GM : MonoBehaviour
         PlayerInstance = GetPlayer();
         pfManager = GetComponent<PFManager>();
         InGameUIInstance = GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUI>();
+        pfManager = GetComponent<PFManager>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
 

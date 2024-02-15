@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 7450456520598219193}
   - component: {fileID: 104235228865014646}
   - component: {fileID: 2714457045842390767}
+  - component: {fileID: 1278817610872434477}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -347,6 +348,7 @@ MonoBehaviour:
   dashCooldown: 3
   dashYSnap: 0.5
   upDashSpeed: 20
+  overrideMovement: 0
 --- !u!114 &6391438851572828633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +424,19 @@ MonoBehaviour:
   saw: {fileID: 8300000, guid: 9ab23a8916a0469418f00ace5a84f721, type: 3}
   velocityCap: 150
   velocitySmoothing: 0.8
+--- !u!114 &1278817610872434477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765354152505107203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992cc83434c6a454fa122f3a9a8b8864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeSkills: []
 --- !u!1 &4939335412662515802
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +450,7 @@ GameObject:
   - component: {fileID: 5064435688746164988}
   m_Layer: 11
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: PlayerSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -684,6 +699,7 @@ GameObject:
   - component: {fileID: 2556053125165634195}
   - component: {fileID: 8911345291177069186}
   - component: {fileID: 1409440275242650718}
+  - component: {fileID: 3399928263071945650}
   m_Layer: 11
   m_Name: Wing2Mesh
   m_TagString: Untagged
@@ -756,6 +772,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!210 &3399928263071945650
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7969597770623521286}
+  m_Enabled: 1
+  m_SortingLayerID: 1730684239
+  m_SortingLayer: 2
+  m_SortingOrder: 2
+  m_SortAtRoot: 0
 --- !u!1 &8975737089608729486
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +826,7 @@ GameObject:
   - component: {fileID: 7416712475387714786}
   - component: {fileID: 4232265759846567352}
   - component: {fileID: 5342530745917221072}
+  - component: {fileID: 4027199167403432973}
   m_Layer: 11
   m_Name: Wing1Mesh
   m_TagString: Untagged
@@ -870,3 +899,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!210 &4027199167403432973
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977674323475089724}
+  m_Enabled: 1
+  m_SortingLayerID: 1730684239
+  m_SortingLayer: 2
+  m_SortingOrder: 2
+  m_SortAtRoot: 0

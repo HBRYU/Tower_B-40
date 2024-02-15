@@ -718,7 +718,7 @@ MonoBehaviour:
     masterTileColor: {r: 0, g: 0, b: 0, a: 0}
     activeTileScale: {x: 1.2, y: 1.2, z: 1}
     lineRenderer: {fileID: 2022978918325940896}
-    setTimeScale: 0.5
+    setTimeScale: 0.3
   healthBar: {fileID: 2529814626127992636}
   lmbWing: {fileID: 2339203388540803998}
   rmbWing: {fileID: 8955623095455590428}

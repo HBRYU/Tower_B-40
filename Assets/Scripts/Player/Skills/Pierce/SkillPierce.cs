@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace Player.Skills
+namespace Player.Skills.Pierce
 {
     [CreateAssetMenu(fileName = "New Pierce Skill", menuName = "Skills/Pierce")]
     public class SkillPierce : Skill
@@ -81,6 +79,7 @@ namespace Player.Skills
             SetPhaseLayers(true);
 
             activationTimeTimer = activationTime;
+            endFlag = false;
         }
         
         public override void Update()
@@ -105,6 +104,7 @@ namespace Player.Skills
             activationTimeTimer = activationTime;
             SetPhaseLayers(false);
             Destroy(animationObjectInstance);
+            playerAnimation.RequestAnimation("Walk", false);
             playerSkillManager.DeactivateSkill(this);
             endFlag = false;
         }
@@ -115,6 +115,7 @@ namespace Player.Skills
             transform = playerObject.transform;
             playerSkillManager = playerObject.GetComponent<PlayerSkillManager>();
             playerMovement = playerObject.GetComponent<PlayerMovement>();
+            playerAnimation = playerObject.GetComponent<PlayerAnimation>();
             sr = GameObject.FindGameObjectWithTag("PlayerSprite").GetComponent<SpriteRenderer>();
             animationObjectInstance = Instantiate(animationObject, transform.position, Quaternion.identity, transform);
             animator = animationObjectInstance.GetComponent<Animator>();
@@ -144,6 +145,7 @@ namespace Player.Skills
         private bool endFlag;
         void Move()
         {
+            Debug.Log(1);
             moveClock += Time.deltaTime;
             if ((speed * Time.deltaTime > Mathf.Abs(endPoint.x - transform.position.x) || speed * moveClock > distance) && !endFlag)
             {
@@ -175,6 +177,8 @@ namespace Player.Skills
                     };
                     wing.SetVertices(vertices);
                 }
+
+                rb.velocity = speed * direction;
             }
         }
 

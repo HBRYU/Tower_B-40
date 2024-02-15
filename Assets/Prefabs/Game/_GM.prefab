@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8350686491935009148}
   - component: {fileID: 751141851061895842}
   - component: {fileID: 5133283178908991432}
+  - component: {fileID: 1964124966456395487}
   m_Layer: 0
   m_Name: _GM
   m_TagString: GM
@@ -84,9 +85,9 @@ MonoBehaviour:
   parentFolder: {fileID: 0}
   parallaxZMultiplier: 0.015
   xOnly: 1
-  zTintMultiplier: 0
-  applyColor: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
+  zTintMultiplier: 0.02
+  applyColor: 1
+  color: {r: 0.8018867, g: 0.8834627, b: 1, a: 1}
 --- !u!114 &751141851061895842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +103,7 @@ MonoBehaviour:
   parentFolder: {fileID: 0}
   parallaxZMultiplier: 0.01
   xOnly: 1
-  zTintMultiplier: 0
+  zTintMultiplier: 0.01
   applyColor: 0
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &5133283178908991432
@@ -119,3 +120,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentFolder: {fileID: 0}
   xSpeed: 0.075
+--- !u!114 &1964124966456395487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406823445785895096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1edf2b96a0b89b4492f720c4146c09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setSkillStatusList:
+  - skill: {fileID: 11400000, guid: c7ddc60ee7cdad041ba1a070cfc02736, type: 2}
+    unlocked: 1
