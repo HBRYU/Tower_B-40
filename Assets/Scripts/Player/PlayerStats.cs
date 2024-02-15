@@ -20,6 +20,13 @@ public class PlayerStats : MonoBehaviour
     public List<debuffs> appliedDebuffs = new();
     public Dictionary<debuffs, IPlayerDebuff> debuffsDict;
     
+    // healing function
+    public void Heal(float heal)
+    {
+        health += heal;
+        if (health > maxHealth) health = maxHealth; // maxhealth limitation
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
