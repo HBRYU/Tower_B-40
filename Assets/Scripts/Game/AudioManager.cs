@@ -62,6 +62,9 @@ public class AudioManager : MonoBehaviour
             AudioSource.reverbZoneMix = reverb;
             AudioSource.loop = loop;
             AudioSource.spatialBlend = spatialBlend;
+            
+            // No one fucking needs doppler effect
+            AudioSource.dopplerLevel = 0f;
 
             TargetPositionGetter = targetPositionGetter;
             FreeCondition = freeCondition ?? (() => !AudioSource.isPlaying);  // Apply default if null

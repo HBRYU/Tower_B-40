@@ -57,6 +57,9 @@ namespace Player.Skills.Pierce
         public override void Activate(GameObject playerObject)
         {
             InitializeVariables(playerObject);
+
+            GM.GetAudioManager().Request(activationAudio, () => transform.position, null,
+                volume: 0.7f, loop: false, spatialBlend: 0.2f, priority: 100);
             
             rb.velocity = Vector2.zero;
             playerMovement.overrideMovement = true;
@@ -145,7 +148,6 @@ namespace Player.Skills.Pierce
         private bool endFlag;
         void Move()
         {
-            Debug.Log(1);
             moveClock += Time.deltaTime;
             if ((speed * Time.deltaTime > Mathf.Abs(endPoint.x - transform.position.x) || speed * moveClock > distance) && !endFlag)
             {
@@ -160,7 +162,6 @@ namespace Player.Skills.Pierce
                 foreach (var wing in wings)
                 {
                     wing.width = initialWingsWidth;
-                    Debug.Log(initialWingsWidth);
                     wing.overrideWing = false;
                 }
             }
@@ -190,7 +191,6 @@ namespace Player.Skills.Pierce
                 var hbInterface = hit.collider.GetComponent<HitboxInterface>();
                 if (hbInterface)
                 {
-                    Debug.Log(damage);
                     var msInterface = hbInterface.masterObject.GetComponent<MobStatsInterface>();
                     if(msInterface)
                         msInterface.stats.TakeDamage(damage);

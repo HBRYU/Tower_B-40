@@ -5,7 +5,7 @@ using UnityEngine;
 public class MimicAudio : MonoBehaviour
 {
     private AudioManager audioManager;
-    public AudioClip alertSFX, searchSFX, warningSFX, slashSFX, releaseSFX;
+    public AudioClip alertSFX, searchSFX, warningSFX, slashSFX, releaseSFX, deathSFX;
 
     public AudioClip[] legMoveSFX, legSFX;
     
@@ -60,5 +60,11 @@ public class MimicAudio : MonoBehaviour
     {
         audioManager.Request(releaseSFX, () => transform.position, null,
             volume: 1f, reverb: 0.5f, loop: false, spatialBlend: 0.5f, priority: 50);
+    }
+    
+    public void PlayDeathSFX()
+    {
+        audioManager.Request(deathSFX, () => transform.position, null,
+            volume: 1f, reverb: 0.5f, loop: false, spatialBlend: 0.5f, priority: 100);
     }
 }

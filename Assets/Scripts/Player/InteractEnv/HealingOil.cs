@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealingOil :  MonoBehaviour{
     private PlayerStats playerStats;
 
-    public float healing_amount;
+    public float healingAmount;
 
     void Start()
     {
@@ -13,14 +13,14 @@ public class HealingOil :  MonoBehaviour{
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.name == "Player"){
+        if (other.gameObject == GM.PlayerInstance){
             heal();
             Destroy(gameObject);
         }
     }
 
     public void heal(){
-        playerStats.Heal(healing_amount);
+        playerStats.Heal(healingAmount);
     }
 
 }

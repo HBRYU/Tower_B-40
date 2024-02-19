@@ -26,6 +26,7 @@ public class MobStats
         if (health <= 0f)
         {
             Die();
+            return;
         }
 
         takeDamageAction();

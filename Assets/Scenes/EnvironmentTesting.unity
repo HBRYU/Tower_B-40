@@ -13792,9 +13792,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096546069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20f9607dd0e954786b46570c3db77ae8, type: 3}
+  m_Script: {fileID: 11500000, guid: bdaa08ffca7794eacb6b1332a5012804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healingAmount: 20
 --- !u!50 &1096546071
 Rigidbody2D:
   serializedVersion: 4

@@ -47,8 +47,10 @@ public class PlayerStats : MonoBehaviour
     {
         // Temporary
         playerMovement.enabled = false;
+        playerAnimation.RequestAnimation("Death", "Trigger");
         playerAnimation.enabled = false;
-        playerWingsBehaviour.enabled = false;
+        playerWingsBehaviour.wing1.Disable(true);
+        playerWingsBehaviour.wing2.Disable(true);
     }
 
     private void Start()

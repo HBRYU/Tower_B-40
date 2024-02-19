@@ -104,17 +104,6 @@ public class MimicLeg
 }
 
 
-public enum MimicState
-{
-    Sleep,
-    Idle,
-    Search,
-    Chase,
-    Flee,
-    Dead
-}
-
-
 [BurstCompile]
 public class MimicAI : MonoBehaviour
 {
@@ -146,7 +135,6 @@ public class MimicAI : MonoBehaviour
 
     [Header("\nAI")] 
     public PFGrid grid;
-    public MimicState state;
     public StateMachine stateMachine = new StateMachine();
 
     public IdleState idleState;
@@ -224,12 +212,12 @@ public class MimicAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        HandleStats();
         stateMachine.Update();
         LegsBehaviour();
         
         if(stats.Dead)
             return;
+        HandleStats();
         HeadBehaviour();
         EyeBehaviour();
         Sight();
@@ -676,7 +664,6 @@ public class MimicAI : MonoBehaviour
         public void Enter()
         {
             Reset();
-            ai.state = MimicState.Idle;
         }
         
         public void Reset()
@@ -765,7 +752,6 @@ public class MimicAI : MonoBehaviour
         {
             this.ai = ai;
             this.timeOut = timeOut;
-            ai.state = MimicState.Chase;
         }
         
         public void Initialize(MimicAI ai)
@@ -895,7 +881,6 @@ public class MimicAI : MonoBehaviour
         public void Enter()
         {
             Reset();
-            ai.state = MimicState.Search;
         }
 
         private void Reset()
@@ -971,13 +956,13 @@ public class MimicAI : MonoBehaviour
             
         }
     }
-    
 
     
     void Die()
     {
         stateMachine.ChangeState(deadState);
         GetComponent<MimicArm>().Die();
+        mimicAudio.PlayDeathSFX();
     }
 
     void TakeDamage()

@@ -4092,7 +4092,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03, y: 0.0057}
+  m_Offset: {x: -0.02456379, y: 0.005699992}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4103,7 +4103,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 1}
+  m_Size: {x: 5.16308, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &697895084
 GameObject:
@@ -59211,7 +59211,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03, y: 0.0057}
+  m_Offset: {x: -0.02456379, y: 0.005699992}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -59222,7 +59222,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 1}
+  m_Size: {x: 5.16308, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &1067240559187376601
 PrefabInstance:
@@ -59236,6 +59236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mimic
       objectReference: {fileID: 0}
+    - target: {fileID: 2989760320570182632, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: deathSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 6179f1541915e8e428750740b53fb11e, type: 3}
     - target: {fileID: 5109401839988099730, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27
@@ -59715,6 +59719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: _AudioSources
       objectReference: {fileID: 0}
+    - target: {fileID: 2138178609098901550, guid: 918199ced5825f241a869d7be812d331, type: 3}
+      propertyPath: m_TagString
+      value: AudioManager
+      objectReference: {fileID: 0}
     - target: {fileID: 7420602310065489017, guid: 918199ced5825f241a869d7be812d331, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.392927
@@ -59771,6 +59779,10 @@ PrefabInstance:
     - target: {fileID: 4765354152505107203, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930096234693408492, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.799
       objectReference: {fileID: 0}
     - target: {fileID: 8153003918923450038, guid: 6a44b09e8a3c0a946a05b930cf6f75f3, type: 3}
       propertyPath: m_LocalPosition.x

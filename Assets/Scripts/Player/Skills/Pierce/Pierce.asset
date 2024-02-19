@@ -16,7 +16,7 @@ MonoBehaviour:
   energyCost: 20
   overrideMovement: 1
   overrideWings: 1
-  activationAudio: {fileID: 0}
+  activationAudio: {fileID: 8300000, guid: f8ef191a58e2ab3439781f749a25f84e, type: 3}
   animationObject: {fileID: 3743924504873526776, guid: daa6204a1d7950140beb0602f1ba3c21, type: 3}
   distance: 12
   speed: 150
@@ -30,5 +30,5 @@ MonoBehaviour:
   phaseThroughLayers:
     serializedVersion: 2
     m_Bits: 4096
-  damage: 50
+  damage: 30
   setPlayerColliderSize: {x: 1, y: 1}

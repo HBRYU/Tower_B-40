@@ -290,6 +290,10 @@ public class InGameUI : MonoBehaviour
                 }
                 lineRenderer.SetPosition(activeTileIndexes.Count, Camera.main.ScreenToWorldPoint(Input.mousePosition));
             }
+            else
+            {
+                lineRenderer.positionCount = 0;
+            }
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
@@ -303,7 +307,7 @@ public class InGameUI : MonoBehaviour
 
         void TriggerSkill()
         {
-            print("Skill Triggered: " + activeTileIndexes.Count);
+            // print("Skill Triggered: " + activeTileIndexes.Count);
             playerSkillManager.TriggerSkill(activeTileIndexes);
             activeTileIndexes = new List<int>();
         }
