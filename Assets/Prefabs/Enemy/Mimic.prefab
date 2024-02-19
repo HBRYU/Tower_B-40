@@ -686,7 +686,6 @@ MonoBehaviour:
   wallLayers:
     serializedVersion: 2
     m_Bits: 128
-  state: 0
   idleState:
     stasisClockMax: 3
     stasisClockMin: 0.5
@@ -770,6 +769,7 @@ MonoBehaviour:
   warningSFX: {fileID: 8300000, guid: e86a1c8fffa2fc2428a5cb5a58f1dcdc, type: 3}
   slashSFX: {fileID: 8300000, guid: 6a6b8f973bc802f4e8678d8dc316991b, type: 3}
   releaseSFX: {fileID: 8300000, guid: 5624a7ab5444f234ab76cb07e59c54bb, type: 3}
+  deathSFX: {fileID: 8300000, guid: 6179f1541915e8e428750740b53fb11e, type: 3}
   legMoveSFX:
   - {fileID: 8300000, guid: a92c4cd22ef02a849b0366a2148adb94, type: 3}
   - {fileID: 8300000, guid: 2912c1b3317f36f489a1260bfe74a20d, type: 3}

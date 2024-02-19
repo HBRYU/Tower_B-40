@@ -59236,10 +59236,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mimic
       objectReference: {fileID: 0}
-    - target: {fileID: 2989760320570182632, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
-      propertyPath: deathSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 6179f1541915e8e428750740b53fb11e, type: 3}
     - target: {fileID: 5109401839988099730, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27
