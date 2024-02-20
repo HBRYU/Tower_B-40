@@ -194,6 +194,7 @@ public class InGameUI : MonoBehaviour
         private Vector2 prevMousePosition;
 
         private PlayerSkillManager playerSkillManager;
+        private PlayerWingsBehaviour playerWingsBehaviour;
 
         public SkillCanvasState(GameObject panel)
         {
@@ -207,6 +208,7 @@ public class InGameUI : MonoBehaviour
             tileImages = tiles.Select(t => t.GetComponent<Image>()).ToArray();
             disabledTileColor = tileImages[0].color;
             playerSkillManager = GM.PlayerInstance.GetComponent<PlayerSkillManager>();
+            playerWingsBehaviour = GM.PlayerInstance.GetComponent<PlayerWingsBehaviour>();
         }
 
         public void Enter()
@@ -215,6 +217,7 @@ public class InGameUI : MonoBehaviour
             panel.SetActive(true);
             GM.Instance.physicsSpeedMutlitplier = setTimeScale;
             prevMousePosition = Input.mousePosition;
+            SetWingsForceIdle(true);
         }
 
         public void Update()
@@ -297,6 +300,7 @@ public class InGameUI : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                SetWingsForceIdle(false);
                 if (activeTileIndexes.Count > 0)
                 {
                     TriggerSkill();
@@ -333,6 +337,12 @@ public class InGameUI : MonoBehaviour
             {
                 tileImages[i].color = masterTileColor;
             }
+        }
+
+        void SetWingsForceIdle(bool value)
+        {
+            playerWingsBehaviour.wing1.ForceIdle(value);
+            playerWingsBehaviour.wing2.ForceIdle(value);
         }
     }
 

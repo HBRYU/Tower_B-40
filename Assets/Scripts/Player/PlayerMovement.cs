@@ -248,6 +248,8 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public bool overrideMovement;
 
+    private CapsuleCollider2D collider;
+
     void Start()
     {
         InitializeComponents();
@@ -276,6 +278,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<PlayerAnimation>();
         playerAudio = GetComponent<PlayerAudio>();
+        collider = GetComponent<CapsuleCollider2D>();
     }
 
     private void InitializeVariables()
@@ -286,7 +289,7 @@ public class PlayerMovement : MonoBehaviour
     private void HandleUseInputX()
     {
         // Used to determine whether to use x velocity from Input.GetAxis or use its current rb velocity (from dash)
-        OnGround = Physics2D.OverlapCircle(feetPosition.position, 0.3f, groundLayers) != null;
+        OnGround = Physics2D.OverlapCircle(feetPosition.position, collider.size.x / 2f - 0.05f, groundLayers) != null;
         if (OnGround && !prevOnGround || onGroundTimer >= 0.5f || Input.GetAxisRaw("Horizontal") != 0f)
         {
             if(!useInputVelocity && onGroundTimer >= 0.5f) RequestAnimation("PlayDecel", "Trigger");

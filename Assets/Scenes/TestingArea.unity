@@ -3985,7 +3985,7 @@ GameObject:
   - component: {fileID: 697347108}
   - component: {fileID: 697347107}
   - component: {fileID: 697347109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59105,7 +59105,7 @@ GameObject:
   - component: {fileID: 2137762344}
   - component: {fileID: 2137762343}
   - component: {fileID: 2137762345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59235,6 +59235,10 @@ PrefabInstance:
     - target: {fileID: 2311074748414079071, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: m_Name
       value: Mimic
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311074748414079071, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5109401839988099730, guid: c53d32b02dc986a44ae2e79ec70b50f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60006,6 +60010,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 922307941}
   - {fileID: 5146912941607014618}
+  - {fileID: 855223801}
+  - {fileID: 1233957033444239610}
   - {fileID: 671930968}
   - {fileID: 5537378903984221915}
   - {fileID: 5324675060471480034}
@@ -60013,8 +60019,6 @@ SceneRoots:
   - {fileID: 1067240559187376601}
   - {fileID: 328579008}
   - {fileID: 1036718118}
-  - {fileID: 855223801}
-  - {fileID: 1233957033444239610}
   - {fileID: 261916046}
   - {fileID: 1146624740}
   - {fileID: 1458239469}

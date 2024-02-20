@@ -59,6 +59,8 @@ public class PlayerWing
     private bool hidden = false;
     public bool overrideWing = false;
     public float width = 0.1f;
+
+    private bool forceIdle = false;
     
     public PlayerWing(bool right, float damage, GameObject meshObject, Material material, Material cooldownMaterial, Vector3 idlePosition,
         float speed, float range, float travelDistanceCoeff, float cooldown, LayerMask collisionLayers)
@@ -325,17 +327,17 @@ public class PlayerWing
 
     public void Disable(bool value)
     {
+        Hide(value);
+        overrideWing = !value;
         if (value)
         {
-            Hide(true);
             SetVertices(new List<Vector3>(){ Vector3.zero, Vector3.zero, Vector3.zero});
-            overrideWing = true;
         }
-        else
-        {
-            Hide(false);
-            overrideWing = false;
-        }
+    }
+
+    public void ForceIdle(bool value)
+    {
+        forceIdle = value;
     }
 
     public void Update()
@@ -347,7 +349,7 @@ public class PlayerWing
         
         if (state != PlayerWingState.cooldown)
         {
-            state = Input.GetMouseButton(inputMouseButton) ? PlayerWingState.followMouse : PlayerWingState.idle;
+            state = Input.GetMouseButton(inputMouseButton) && !forceIdle ? PlayerWingState.followMouse : PlayerWingState.idle;
         }
         
         HandleUI();
