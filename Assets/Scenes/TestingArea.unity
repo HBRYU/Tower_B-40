@@ -4693,12 +4693,12 @@ GameObject:
   - component: {fileID: 848815280}
   - component: {fileID: 848815279}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Grey BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &848815279
 SpriteRenderer:
   m_ObjectHideFlags: 0
