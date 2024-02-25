@@ -5079,9 +5079,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 751141851061895842, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 751141851061895842, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
       propertyPath: parentFolder
       value: 
       objectReference: {fileID: 2025528022}
+    - target: {fileID: 751141851061895842, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: zTintMultiplier
+      value: 0.0075
+      objectReference: {fileID: 0}
     - target: {fileID: 1406823445785895096, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
       propertyPath: m_Name
       value: _GM
@@ -5127,6 +5135,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5133283178908991432, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133283178908991432, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
       propertyPath: parentFolder
       value: 
       objectReference: {fileID: 2025528022}
@@ -5142,6 +5154,10 @@ PrefabInstance:
       propertyPath: graphTransform
       value: 
       objectReference: {fileID: 671930968}
+    - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8350686491935009148, guid: 3fd62e5868625334ea58b98edb5186a1, type: 3}
       propertyPath: parentFolder
       value: 
@@ -59482,6 +59498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clouds_1
       objectReference: {fileID: 0}
+    - target: {fileID: 3487568395974166096, guid: d157e29e654545940bb56ecc7bf10f81, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
     - target: {fileID: 6101033657729744355, guid: d157e29e654545940bb56ecc7bf10f81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.017279
@@ -59653,6 +59673,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2025528022}
     m_Modifications:
+    - target: {fileID: 2562105910304186973, guid: f062c57df2ca34b49a4956381ee17a39, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
     - target: {fileID: 5119367450436066978, guid: f062c57df2ca34b49a4956381ee17a39, type: 3}
       propertyPath: m_Name
       value: Clouds_
@@ -59982,6 +60006,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2025528022}
     m_Modifications:
+    - target: {fileID: 2346874372433985123, guid: 61662469a38a87e479ce7cc53844cbfb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
     - target: {fileID: 6616609422880154888, guid: 61662469a38a87e479ce7cc53844cbfb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.710432
@@ -60083,6 +60111,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6413613387292536737, guid: a212ef69d8a96eb42848c4686a8a3a3c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e5470050880cb04780a361ed29f0d5b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

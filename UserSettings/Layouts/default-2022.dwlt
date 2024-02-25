@@ -41,7 +41,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1706.6667
+    width: 1706.6666
     height: 926
   m_MinSize: {x: 200, y: 223}
   m_MaxSize: {x: 4000, y: 4023}
@@ -66,7 +66,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1706.6667
+    width: 1706.6666
     height: 976
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -91,7 +91,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1706.6667
+    width: 1706.6666
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 956
-    width: 1706.6667
+    width: 1706.6666
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 72.66667
-    width: 1706.6667
+    width: 1706.6666
     height: 907
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -193,19 +193,19 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1706.6667
+      width: 1706.6666
       height: 886
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 853.3334, y: 443}
+    m_Translation: {x: 853.3333, y: 443}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -853.3334
+      x: -853.3333
       y: -443
-      width: 1706.6667
+      width: 1706.6666
       height: 886
     m_MinimalGUI: 1
   m_defaultScale: 1

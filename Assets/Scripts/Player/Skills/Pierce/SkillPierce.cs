@@ -59,7 +59,7 @@ namespace Player.Skills.Pierce
             InitializeVariables(playerObject);
 
             GM.GetAudioManager().Request(activationAudio, () => transform.position, null,
-                volume: 0.7f, loop: false, spatialBlend: 0.2f, priority: 100);
+                volume: 0.4f, loop: false, spatialBlend: 0.2f, priority: 100);
             
             rb.velocity = Vector2.zero;
             playerMovement.overrideMovement = true;
