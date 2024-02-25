@@ -7,6 +7,67 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
+/* One day I'll learn to document my own fucking code
+ * PFManager, PFGraph, and PFGrid Pathfinding System
+ * --------------------------------------------------
+ * 
+ * Overview:
+ * This system consists of three main components - PFManager, PFGraph, and PFGrid - that work together to handle
+ * pathfinding tasks in a Unity project. PFManager acts as the central hub for pathfinding operations, PFGraph handles
+ * pathfinding over larger areas using Dijkstra's algorithm, and PFGrid is tailored for A* pathfinding on a tile-based
+ * map.
+ * 
+ * PFManager:
+ * - Manages the overall pathfinding process.
+ * - Contains references to PFGraph and tilemaps for PFGrid.
+ * - Provides static utility methods like GetNearestNode for external access.
+ * 
+ * PFGraph:
+ * - Handles pathfinding across nodes (PFNode) using Dijkstra's algorithm.
+ * - Best suited for larger, interconnected areas.
+ * - Each PFNode represents a point in space, and nodes are linked to form a navigable graph.
+ * - EnsureEdgeLinks feature ensures bi-directional links between adjacent nodes.
+ * 
+ * PFGrid:
+ * - Specialized for A* pathfinding on a grid or tilemap.
+ * - PFTile struct represents each tile in the grid, storing relevant pathfinding data.
+ * - Useful for finer pathfinding tasks within a node of the PFGraph.
+ * - Can handle walkability checks, world to grid position conversions, and more.
+ * 
+ * Usage:
+ * 1. PFManager Initialization:
+ *    - Create a PFManager object in your scene.
+ *    - Assign the graphTransform to the PFManager to set up the node graph.
+ * 
+ * 2. PFGraph Setup:
+ *    - Nodes are setup as children of graphTransform with PFNodeInterface components.
+ *    - Call new PFGraph(graphTransform) to initialize the node graph.
+ * 
+ * 3. PFGrid Setup:
+ *    - Assign the tilemap to the PFGrid for A* pathfinding on a grid.
+ *    - Initialize with new PFGrid(name, tilemap) where name is a unique identifier.
+ * 
+ * 4. Pathfinding:
+ *    - For larger area pathfinding, use PFGraph.GetDijkstraPath(startNode, endNode).
+ *    - For grid-based pathfinding, use PFGrid.GetAStarPath(startWorldPos, endWorldPos).
+ * 
+ * 5. Utility Methods:
+ *    - PFManager.GetNearestNode(position) finds the closest node to a given world position.
+ * 
+ * External Usage:
+ * - To find a path from one point to another, first determine if the path is within a single node (use PFGrid) or spans across multiple nodes (use PFGraph).
+ * - If using PFGraph, convert world positions to nodes using PFManager.GetNearestNode.
+ * - For PFGrid, directly input world positions into PFGrid.GetAStarPath.
+ * - Use the returned path data to guide your agents.
+ * 
+ * Notes:
+ * - Ensure all PFNode positions are correctly set up in the Unity Editor.
+ * - For PFGrid, walkable areas must be accurately represented in the tilemap.
+ * - This system is designed for flexibility and can be adapted to different scales and types of environments.
+ */
+
+
 [BurstCompile]
 public class PFGrid
 {

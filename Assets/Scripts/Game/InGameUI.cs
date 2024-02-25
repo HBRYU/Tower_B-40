@@ -360,4 +360,9 @@ public class InGameUI : MonoBehaviour
     {
         state.ChangeState(basicState);
     }
+
+    public void OnDeath()
+    {
+        GetComponent<Animator>().SetTrigger("OnSpaceRelease");
+    }
 }
