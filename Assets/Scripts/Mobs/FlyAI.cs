@@ -62,8 +62,8 @@ public class FlyAI : MonoBehaviour
         private Rigidbody2D rb;
         
         public float idleSpeed;
-        public float idealHeight;
-        private const float MaxHeight = 20f;
+        public float idealHeight, minHeight, maxHeight;
+        private const float HeightRayLength = 999f;
         public float maxThrust;
 
         private float currentHeight;
@@ -106,28 +106,33 @@ public class FlyAI : MonoBehaviour
 
         float GetHeight(Vector2 position)
         {
-            RaycastHit2D downwardRayHit = Physics2D.Raycast(position, Vector2.down, MaxHeight, wallLayers);
-            return !downwardRayHit ? MaxHeight : position.y - downwardRayHit.point.y;
+            RaycastHit2D downwardRayHit = Physics2D.Raycast(position, Vector2.down, HeightRayLength, wallLayers);
+            return !downwardRayHit ? HeightRayLength : position.y - downwardRayHit.point.y;
         }
 
         Vector2 GetNextTargetPosition()
         {
             var position = transform.position;
-            float theta = Random.Range(0f, Mathf.PI * (2f/3f));
-            if (theta > Mathf.PI * (1f / 3f)) theta += Mathf.PI * (1f / 3f);
-
+            //float theta = Random.Range(0f, Mathf.PI * (2f/3f));
+            //if (theta > Mathf.PI * (1f / 3f)) theta += Mathf.PI * (1f / 3f);
+            float theta = Random.Range(0f, 2 * Mathf.PI);
+            
+            
             Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
             
             RaycastHit2D dirRayHit = Physics2D.Raycast(position,dir, nextPositionMaxDistance, wallLayers);
             float cusion = 0.5f;
-            float maxD = dirRayHit ? Vector2.Distance(position, dirRayHit.point) - 0.5f : nextPositionMaxDistance;
+            float maxD = dirRayHit ? Vector2.Distance(position, dirRayHit.point) - cusion : nextPositionMaxDistance;
             if (maxD < 0f) maxD = 0f;
             float d = Random.Range(0f, maxD);
 
-            float positionHeight = GetHeight((Vector2)position + dir * d);
-            Debug.Log(positionHeight);
+            Vector2 basePosition = (Vector2)position + dir * d;
             
-            Vector2 nextTargetPos =  (Vector2)position + dir * d + new Vector2(0f, idealHeight - positionHeight);
+            float positionHeight = GetHeight(basePosition);
+
+            float nextHeight = positionHeight < idealHeight ? idealHeight : positionHeight > maxHeight ? maxHeight : positionHeight;
+            
+            Vector2 nextTargetPos =  new Vector2(basePosition.x, basePosition.y + nextHeight - positionHeight);
             if(Physics2D.OverlapCircle(nextTargetPos, 0.2f, wallLayers))
                 nextTargetPos = (Vector2)position + dir * d;
 

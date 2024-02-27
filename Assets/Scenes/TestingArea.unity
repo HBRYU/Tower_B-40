@@ -22662,6 +22662,8 @@ MonoBehaviour:
   idleState:
     idleSpeed: 5
     idealHeight: 2
+    minHeight: 1.5
+    maxHeight: 10
     maxThrust: 20
     minStayTime: 1
     maxStayTime: 3
