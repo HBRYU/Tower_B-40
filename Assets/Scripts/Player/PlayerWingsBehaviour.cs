@@ -398,15 +398,15 @@ public class PlayerWingsBehaviour : MonoBehaviour
     public Vector3 wing1Offset = new (-0.5f, 0.5f);
     public Vector3 wing2Offset = new (-0.25f, 0.5f);
 
-    public float damage, cooldown, velocityDamageMultiplier, maxVelocityDamage;
+    public float damage, cooldown, velocityDamageMultiplier, maxVelocityDamage, range;
 
     public LayerMask collisionLayers;
     public TrailRenderer wing1TrailRenderer, wing2TrailRenderer;
     
     void Start()
     {
-        wing1 = new PlayerWing(false, damage, wing1meshObject, wingMaterial, wingCooldownMaterial, wing1Offset, 0.5f, 7f, 0.75f, cooldown, collisionLayers);
-        wing2 = new PlayerWing(true, damage, wing2meshObject, wingMaterial, wingCooldownMaterial, wing2Offset, 0.5f, 7f, 0.75f, cooldown, collisionLayers);
+        wing1 = new PlayerWing(false, damage, wing1meshObject, wingMaterial, wingCooldownMaterial, wing1Offset, 0.5f, 7f, range, cooldown, collisionLayers);
+        wing2 = new PlayerWing(true, damage, wing2meshObject, wingMaterial, wingCooldownMaterial, wing2Offset, 0.5f, 7f, range, cooldown, collisionLayers);
 
         wing1.inputMouseButton = 0;
         wing2.inputMouseButton = 1;

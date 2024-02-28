@@ -44,7 +44,6 @@ public class FlyAI : MonoBehaviour
 
     void SetupVariables()
     {
-        grid = new PFGrid("based", GM.Instance.standardAStarTilemap);
         player = GM.PlayerInstance;
         pupilSpriteRenderer = pupilTransform.GetComponent<SpriteRenderer>();
         
@@ -60,6 +59,8 @@ public class FlyAI : MonoBehaviour
         private FlyAI ai;
         private Transform transform;
         private Rigidbody2D rb;
+        private SpriteRenderer sr;
+
         
         public float idleSpeed;
         public float idealHeight, minHeight, maxHeight;
@@ -75,7 +76,6 @@ public class FlyAI : MonoBehaviour
         private Vector2 targetPosition;
 
         private LayerMask wallLayers;
-
         // Doesn't need a constructor since it can be instantiated in editor
         
         public void Initialize(FlyAI ai)
@@ -84,6 +84,7 @@ public class FlyAI : MonoBehaviour
             transform = ai.transform;
             wallLayers = ai.wallLayers;
             rb = ai.GetComponent<Rigidbody2D>();
+            sr = ai.GetComponent<SpriteRenderer>();
         }
         
         public void Enter()
@@ -136,6 +137,11 @@ public class FlyAI : MonoBehaviour
             if(Physics2D.OverlapCircle(nextTargetPos, 0.2f, wallLayers))
                 nextTargetPos = (Vector2)position + dir * d;
 
+            if (nextTargetPos.x > transform.position.x)
+                sr.flipX = false;
+            else
+                sr.flipX = true;
+
             return nextTargetPos;
         }
 
@@ -161,6 +167,44 @@ public class FlyAI : MonoBehaviour
             //    return;
             
             rb.AddForce((targetDir + deltaDir) * maxThrust);
+        }
+    }
+
+    [Serializable]
+    public class ChaseState : IState
+    {
+        private FlyAI ai;
+        private Transform transform;
+        private Rigidbody2D rb;
+        private SpriteRenderer sr;
+        public LayerMask wallLayers;
+        private PFGrid grid;
+        
+        public void Initialize(FlyAI ai)
+        {
+            this.ai = ai;
+            transform = ai.transform;
+            rb = transform.GetComponent<Rigidbody2D>();
+            sr = transform.GetComponent<SpriteRenderer>();
+            wallLayers = ai.wallLayers;
+            
+            grid = new PFGrid("based", GM.Instance.standardAStarTilemap);
+        }
+        
+        
+        public void Enter()
+        {
+            
+        }
+
+        public void Update()
+        {
+            
+        }
+
+        public void Exit()
+        {
+            
         }
     }
 }

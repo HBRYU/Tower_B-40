@@ -36,8 +36,9 @@ public class PlayerWingsAudio : MonoBehaviour
             prevVelocities.Add(0f);
         }
         
-        audioSourcesSine.ForEach(source => source.dopplerLevel = 0f);
-        audioSourcesSaw.ForEach(source => source.dopplerLevel = 0f);
+        // Updated AudioManager to disable doppler by default
+        // audioSourcesSine.ForEach(source => source.dopplerLevel = 0f);
+        // audioSourcesSaw.ForEach(source => source.dopplerLevel = 0f);
     }
 
     void FixedUpdate()
