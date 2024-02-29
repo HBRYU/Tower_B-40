@@ -198,6 +198,36 @@ public class PFGrid
 
         return neighbours.ToArray();
     }
+    
+    private Vector3Int[] GetNeighbourTilesNoDiagonals(Vector3Int pos)
+    {
+        //GPT4.
+        List<Vector3Int> neighbours = new List<Vector3Int>(4); // Only 4 neighbours for cardinal directions
+
+        // Array of delta positions for cardinal directions
+        Vector3Int[] deltas = new Vector3Int[]
+        {
+            new Vector3Int(0, 1, 0), // Up
+            new Vector3Int(0, -1, 0), // Down
+            new Vector3Int(-1, 0, 0), // Left
+            new Vector3Int(1, 0, 0) // Right
+        };
+
+        foreach (var delta in deltas)
+        {
+            int newX = pos.x + delta.x;
+            int newY = pos.y + delta.y;
+
+            // Check for borders
+            if (newX < 0 || newX >= sizeX || newY < 0 || newY >= sizeY)
+                continue;
+
+            neighbours.Add(new Vector3Int(newX, newY, 0));
+        }
+
+        return neighbours.ToArray();
+    }
+
 
     private int GetDistanceCost(Vector3Int a, Vector3Int b)
     {
@@ -230,10 +260,11 @@ public class PFGrid
     }
     
     public Vector3[] GetAStarPath(Vector3 startWorldPos, Vector3 endWorldPos, int maxStep = 500, int wCost = 0, 
-        bool preventCornerCutting = false)
+        bool preventCornerCutting = false, bool useDiagonal = true)
     {
         Vector3Int start = GetArrayPositionWorld(startWorldPos);
         Vector3Int end = GetArrayPositionWorld(endWorldPos);
+        Func<Vector3Int, Vector3Int[]> getNeighbourTilesFunc = useDiagonal ? GetNeighbourTiles : GetNeighbourTilesNoDiagonals;
 
         // Start == End evaluation
         if (start == end)
@@ -279,7 +310,7 @@ public class PFGrid
         {
             step++;
             
-            Vector3Int[] neighbours = GetNeighbourTiles(currentPos);
+            Vector3Int[] neighbours = getNeighbourTilesFunc(currentPos);
             foreach (var neighbour in neighbours)
             {
                 PFTile neighbourTile = tiles[neighbour.x, neighbour.y];  // value type. read only.
@@ -314,7 +345,7 @@ public class PFGrid
                 int w = 0;
                 if (wCost>0)
                 {
-                    Vector3Int[] neighbourNeighbours = GetNeighbourTiles(neighbour);
+                    Vector3Int[] neighbourNeighbours = getNeighbourTilesFunc(neighbour);
                     if (neighbourNeighbours.Any(n => !tiles[n.x, n.y].walkable))
                     {
                         w = wCost;

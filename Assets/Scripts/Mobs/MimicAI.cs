@@ -14,6 +14,7 @@ public class MimicLeg
     public bool disabled, dead;
     public Transform transform;
     public Transform bodyTransform;
+    private Rigidbody2D rb;
     public LineRenderer lineRenderer;
     public Vector3 Position => transform.position;
     public Vector3 Direction => (Position - bodyTransform.position).normalized;
@@ -23,15 +24,19 @@ public class MimicLeg
     public readonly float force;
 
     public float deadCableLength;
+
+    private Vector2 velocity;
     
     public MimicLeg(bool isSmall, Transform transform, Transform bodyTransform, float speed, float force)
     {
         this.isSmall = isSmall;
         this.transform = transform;
         this.bodyTransform = bodyTransform;
+        rb = this.transform.GetComponent<Rigidbody2D>();
         this.speed = speed;
         this.force = force;
         lineRenderer = transform.GetComponent<LineRenderer>();
+        velocity = Vector2.zero;
     }
 
     public void MoveToTargetPoint()
@@ -43,7 +48,8 @@ public class MimicLeg
         transform.Translate(moveVector);
         */
 
-        transform.position = Vector3.Lerp(Position, target, speed);
+        //transform.position = Vector3.Lerp(Position, target, speed);
+        transform.position = Vector2.SmoothDamp(Position, target, ref velocity, 1f/speed);
     }
 
     public void DrawCableToBody()
@@ -166,7 +172,7 @@ public class MimicAI : MonoBehaviour
                 - Small range
                 */
                 GameObject thisNodeObj = Instantiate(smallLegObj, pos, Quaternion.identity);
-                thisNode = new MimicLeg(true, thisNodeObj.transform, transform, 0.25f, smallLegForce);
+                thisNode = new MimicLeg(true, thisNodeObj.transform, transform, 5f, smallLegForce);
             }
             else
             {
@@ -175,7 +181,7 @@ public class MimicAI : MonoBehaviour
                 - Medium range
                 */
                 GameObject thisNodeObj = Instantiate(legObj, pos, Quaternion.identity);
-                thisNode = new MimicLeg(false, thisNodeObj.transform, transform, 0.05f, legForce);
+                thisNode = new MimicLeg(false, thisNodeObj.transform, transform, 3f, legForce);
             }
             legs.Add(thisNode);
         }

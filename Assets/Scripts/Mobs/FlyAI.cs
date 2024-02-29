@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,6 +28,7 @@ public class FlyAI : MonoBehaviour
     
     private StateMachine stateMachine;
     public IdleState idleState;
+    public ChaseState chaseState;
 
     public Transform eyeTransform, pupilTransform;
     private SpriteRenderer pupilSpriteRenderer;
@@ -39,6 +41,7 @@ public class FlyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        DetermineState();
         stateMachine.Update();
     }
 
@@ -46,11 +49,35 @@ public class FlyAI : MonoBehaviour
     {
         player = GM.PlayerInstance;
         pupilSpriteRenderer = pupilTransform.GetComponent<SpriteRenderer>();
+        retainPlayerSightTimer = retainPlayerSightTime;
         
         stateMachine = new StateMachine();
         
         idleState.Initialize(this);
+        chaseState.Initialize(this);
         stateMachine.ChangeState(idleState);
+    }
+
+    void DetermineState()
+    {
+        if (PlayerInSight() || retainPlayerSightTimer > 0f)
+        {
+            stateMachine.ChangeStateIfNot(chaseState);
+        }
+        else
+        {
+            stateMachine.ChangeStateIfNot(idleState);
+        }
+    }
+
+    bool PlayerInSight()
+    {
+        var position = transform.position;
+        var position1 = player.transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(position, position1 - position, Vector2.Distance(position, position1),
+            wallLayers);
+        retainPlayerSightTimer = !hit ? retainPlayerSightTime : retainPlayerSightTimer - Time.fixedDeltaTime;
+        return !hit;
     }
 
     [Serializable]
@@ -66,8 +93,6 @@ public class FlyAI : MonoBehaviour
         public float idealHeight, minHeight, maxHeight;
         private const float HeightRayLength = 999f;
         public float maxThrust;
-
-        private float currentHeight;
 
         public float minStayTime, maxStayTime;
         private float stayTimer;
@@ -94,10 +119,8 @@ public class FlyAI : MonoBehaviour
 
         public void Update()
         {
-            currentHeight = GetHeight(transform.position);
             HandleTargetPosition();
             HandleMovement();
-            ai.eyeTransform.position = targetPosition;
         }
 
         public void Exit()
@@ -179,6 +202,17 @@ public class FlyAI : MonoBehaviour
         private SpriteRenderer sr;
         public LayerMask wallLayers;
         private PFGrid grid;
+        private Queue<Vector3> pathQueue;
+        public float pathRefreshClock;
+        private float pathRefreshClockTimer;
+        private Transform playerTransform;
+        private Vector3 nextTargetPos;
+        
+        public float idealHeight, minHeight, maxHeight;
+        private const float HeightRayLength = 999f;
+        public float maxThrust;
+
+        private bool playerInSight;
         
         public void Initialize(FlyAI ai)
         {
@@ -187,8 +221,10 @@ public class FlyAI : MonoBehaviour
             rb = transform.GetComponent<Rigidbody2D>();
             sr = transform.GetComponent<SpriteRenderer>();
             wallLayers = ai.wallLayers;
+            playerTransform = GM.PlayerInstance.transform;
             
             grid = new PFGrid("based", GM.Instance.standardAStarTilemap);
+            pathQueue = new Queue<Vector3>();
         }
         
         
@@ -199,12 +235,175 @@ public class FlyAI : MonoBehaviour
 
         public void Update()
         {
-            
+            playerInSight = ai.PlayerInSight();
+            if (playerInSight)
+            {
+                var playerPos = playerTransform.position;
+                float strikeDistance = 3f;
+                nextTargetPos = playerPos + (transform.position - playerPos).normalized * strikeDistance;
+                float h = GetHeight(nextTargetPos);
+                if (h < minHeight && !CheckCeiling(transform.position))
+                    nextTargetPos.y += idealHeight - h;
+            }
+            else
+            {
+                HandlePathQueue();
+                if(Vector2.Distance(transform.position, nextTargetPos) < 0.5f)
+                    pathQueue.TryDequeue(out nextTargetPos);
+            }
+            HandleMovement();
+            HandleSprite();
         }
 
         public void Exit()
         {
             
+        }
+        
+        float GetHeight(Vector2 position)
+        {
+            RaycastHit2D downwardRayHit = Physics2D.Raycast(position, Vector2.down, HeightRayLength, wallLayers);
+            return !downwardRayHit ? HeightRayLength : position.y - downwardRayHit.point.y;
+        }
+
+        bool CheckCeiling(Vector2 position)
+        {
+            float d = 0.5f;
+            RaycastHit2D upwardRayHit = Physics2D.Raycast(position, Vector2.up, d, wallLayers);
+            return upwardRayHit;
+        }
+
+        void HandlePathQueue()
+        {
+            pathRefreshClockTimer -= Time.fixedDeltaTime;
+            if (pathRefreshClockTimer <= 0f)
+            {
+                EnqueuePath(playerTransform.position);
+                pathRefreshClockTimer = pathRefreshClock;
+            }
+        }
+
+        void EnqueuePath(Vector3 target, bool clearCache = true)
+        {
+            if(clearCache)
+                pathQueue.Clear();
+        
+            List<Vector3> path = new List<Vector3>();
+            var position = transform.position;
+            PFNode nearestNode = PFManager.GetNearestNode(position);
+            PFNode nearestDestinationNode = PFManager.GetNearestNode(target);
+            // Head straight to target with A* if it's visible and within range
+            float closeEnoughRange = 20f;
+            float d = Vector2.Distance(position, target);
+            if (d <= closeEnoughRange && Physics2D.Raycast(position, target - position, d, wallLayers).collider ==
+                null)
+            {
+                // #0. target visible from current position
+                path = grid.GetAStarPath(position, target, wCost: 3).ToList();
+            }
+            else if(nearestNode != nearestDestinationNode)
+            {
+                // #1. start node != end node
+                Vector2[] nodePath = 
+                    GM.GetPFManager().pfGraph.GetDijkstraPath(nearestNode, nearestDestinationNode, debug:true).Select(node => node.position).ToArray();
+
+                if (nodePath.Length == 0)
+                {
+                    Debug.LogWarning("Error in graph pathfinding :(");
+                    return;
+                }
+                
+                if (Vector3.Distance(nodePath[0], nodePath[1]) >
+                    Vector3.Distance(transform.position, nodePath[1]))
+                    nodePath = nodePath.Skip(1).ToArray();
+                
+                path.AddRange(grid.GetAStarPath(transform.position, nodePath[0], wCost:3));
+                
+                for (int i = 0; i < nodePath.Length - 1; i++)
+                {
+                    Vector3[] pathChunk = grid.GetAStarPath(nodePath[i], nodePath[i + 1],
+                        wCost: 10);
+                
+                    path.AddRange(pathChunk);
+                }
+                
+                path.AddRange(grid.GetAStarPath(path.Last(), target));
+            }
+            else
+            {
+                // #2. start node == end node
+                path = grid.GetAStarPath(transform.position, target).ToList();
+            }
+            
+            // Process path to only include key tiles around turns instead of the entire path
+            /*
+             *  --------
+             *          \
+             *           \
+             *            \
+             *             ------->
+             *  would now be
+             *
+             *  -       -
+             *           \
+             *
+             *             \
+             *              -    ->
+             */
+
+            if (path.Count == 0)
+            {
+                // Don't do enqueues if path is empty
+                return;
+            }
+            
+            List<Vector3> pathProcessed = new List<Vector3> {path[0]};
+            for (int i = 1; i < path.Count-1; i++)
+            {
+                var delta1 = path[i] - path[i - 1];
+                var delta2 = path[i + 1] - path[i];
+
+                if ((delta2 - delta1).sqrMagnitude > 0.01f)
+                {
+                    pathProcessed.Add(path[i]);
+                }
+            }
+            pathProcessed.Add(path.Last());
+            // pathProcessed.ForEach(tile => print(tile));
+
+           
+            
+            pathProcessed.ForEach(tile => pathQueue.Enqueue(tile));
+        }
+        
+        void HandleMovement()
+        {
+            Vector3 targetDir = (nextTargetPos - transform.position).normalized;
+            Vector3 velocityDir = rb.velocity.normalized;
+
+            Vector3 deltaDir = targetDir - velocityDir;
+            
+            float maxDeltaDir = 0.1f;
+            //if (Vector3.Cross(targetDir, velocityDir).magnitude < maxDeltaDir)
+            //    return;
+            
+            rb.AddForce((targetDir + deltaDir) * maxThrust);
+        }
+
+        void HandleSprite()
+        {
+            if (playerInSight)
+            {
+                sr.flipX = playerTransform.position.x < transform.position.x;
+                return;
+            }
+            
+            if (Vector3.Distance(transform.position, nextTargetPos) < 0.2f)
+                return;
+            if (nextTargetPos.x > transform.position.x)
+                sr.flipX = false;
+            else
+                sr.flipX = true;
         }
     }
 }
