@@ -287,7 +287,6 @@ public class PlayerWing
             return;
         
         GameObject targetObj = hbInterface.masterObject;
-        
         mobStatsInterface = targetObj.GetComponent<MobStatsInterface>();
         if (mobStatsInterface != null)
         {
@@ -301,8 +300,9 @@ public class PlayerWing
         }
 
         Rigidbody2D targetRb = targetObj.GetComponent<Rigidbody2D>();
-        Vector3 impulse = deltaPos * 1000f;  // For now
-        //Debug.Log(impulse.magnitude);
+        var v = deltaPos / Time.fixedDeltaTime;
+        var m = 25f;
+        Vector3 impulse = m * v;
         if(targetRb)
             targetRb.AddForce(impulse);
     }

@@ -57,6 +57,9 @@ TagManager:
   - name: Player
     uniqueID: 1730684239
     locked: 0
+  - name: Bullets
+    uniqueID: 653504889
+    locked: 0
   - name: Ground
     uniqueID: 2127490679
     locked: 0

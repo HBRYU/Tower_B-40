@@ -29,12 +29,12 @@ public class MobStats
             return;
         }
 
-        takeDamageAction();
+        takeDamageAction?.Invoke();
     }
 
     public void Die()
     {
-        deathAction();
+        deathAction?.Invoke();
         Dead = true;
     }
 }

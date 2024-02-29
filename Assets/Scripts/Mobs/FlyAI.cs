@@ -7,17 +7,9 @@ using Random = UnityEngine.Random;
 
 public class FlyAI : MonoBehaviour
 {
-    public float speed;
-    public float moveInterval;
-    private float moveIntervalTimer;
+    private MobStats stats;
 
-    public float hoveringJitter;  // Use idle movement logic from PlayerWingsBehaviour
-    public int burstBulletCount;
-    private int bulletCounter;
-    public float fireSpeed, reloadTime;
-    private float reloadTimer;
-
-    public float damage, range, minFireDistance, sight, retainPlayerSightTime;
+    public float sight, retainPlayerSightTime;
     private float retainPlayerSightTimer;  // Too lazy to make probable player position logic again. A timer will make-do
 
     public LayerMask wallLayers;
@@ -31,9 +23,15 @@ public class FlyAI : MonoBehaviour
     public ChaseState chaseState;
 
     public Transform eyeTransform, pupilTransform;
-    private SpriteRenderer pupilSpriteRenderer;
+    private SpriteRenderer sr, pupilSpriteRenderer;
+    private Rigidbody2D rb;
+
+    public AudioClip[] flyNoises;
+    public AudioClip deathSFX;
     
-    
+    public bool PlayerInSight { get; private set; }
+
+
     void Start()
     {
         SetupVariables();
@@ -41,14 +39,25 @@ public class FlyAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(stats.Dead)
+            return;
+        
+        PlayerInSight = CheckPlayerInSight();
         DetermineState();
         stateMachine.Update();
+        eyeTransform.localPosition = new Vector3(sr.flipX ? -3f / 16f : 3f / 16f, 0f, 0f);
+        PupilBehaviour();
     }
 
     void SetupVariables()
     {
+        stats = GetComponent<MobStatsInterface>().stats;
+        stats.deathAction = Die;
+        stats.takeDamageAction = TakeDamage;
         player = GM.PlayerInstance;
         pupilSpriteRenderer = pupilTransform.GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         retainPlayerSightTimer = retainPlayerSightTime;
         
         stateMachine = new StateMachine();
@@ -60,7 +69,7 @@ public class FlyAI : MonoBehaviour
 
     void DetermineState()
     {
-        if (PlayerInSight() || retainPlayerSightTimer > 0f)
+        if (PlayerInSight || retainPlayerSightTimer > 0f)
         {
             stateMachine.ChangeStateIfNot(chaseState);
         }
@@ -70,14 +79,47 @@ public class FlyAI : MonoBehaviour
         }
     }
 
-    bool PlayerInSight()
+    bool CheckPlayerInSight()
     {
         var position = transform.position;
         var position1 = player.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(position, position1 - position, Vector2.Distance(position, position1),
+        var d = Vector2.Distance(position, position1);
+        RaycastHit2D hit = Physics2D.Raycast(position, position1 - position, d,
             wallLayers);
         retainPlayerSightTimer = !hit ? retainPlayerSightTime : retainPlayerSightTimer - Time.fixedDeltaTime;
-        return !hit;
+        return !hit && d <= sight;
+    }
+
+    void PupilBehaviour()
+    {
+        if (!PlayerInSight)
+        {
+            pupilTransform.localPosition = Vector3.zero;
+            pupilSpriteRenderer.color = Color.white;
+            return;
+        }
+
+        pupilSpriteRenderer.color = new Color(0f, 0.75f, 1f);
+
+        float d = 1f/16f, t = 0.5f;
+        Vector3 targetPos = (player.transform.position - transform.position).normalized * d;
+        pupilTransform.localPosition = Vector3.Lerp(pupilTransform.localPosition, targetPos, t);
+    }
+
+    void TakeDamage()
+    {
+        retainPlayerSightTimer = retainPlayerSightTime;
+        stateMachine.ChangeStateIfNot(chaseState);
+    }
+
+    void Die()
+    {
+        pupilSpriteRenderer.color = Color.black;
+        rb.freezeRotation = false;
+        rb.gravityScale = 1f;
+        rb.sharedMaterial = null;
+        GM.GetAudioManager().Request(deathSFX, () => transform.position, null,
+            volume: 0.5f, spatialBlend: 0.7f, priority: 10);
     }
 
     [Serializable]
@@ -185,7 +227,7 @@ public class FlyAI : MonoBehaviour
 
             Vector2 deltaDir = targetDir - velocityDir;
             
-            float maxDeltaDir = 0.1f;
+            //float maxDeltaDir = 0.1f;
             //if (Vector3.Cross(targetDir, velocityDir).magnitude < maxDeltaDir)
             //    return;
             
@@ -212,7 +254,7 @@ public class FlyAI : MonoBehaviour
         private const float HeightRayLength = 999f;
         public float maxThrust;
 
-        private bool playerInSight;
+        private bool PlayerInSight;
         
         public void Initialize(FlyAI ai)
         {
@@ -230,13 +272,14 @@ public class FlyAI : MonoBehaviour
         
         public void Enter()
         {
-            
+            GM.GetAudioManager().Request(ai.flyNoises[Random.Range(0, ai.flyNoises.Length)], () => transform.position,
+                null, volume: 0.7f, spatialBlend: 0.7f, priority: 50);
         }
 
         public void Update()
         {
-            playerInSight = ai.PlayerInSight();
-            if (playerInSight)
+            PlayerInSight = ai.PlayerInSight;
+            if (PlayerInSight)
             {
                 var playerPos = playerTransform.position;
                 float strikeDistance = 3f;
@@ -383,8 +426,8 @@ public class FlyAI : MonoBehaviour
 
             Vector3 deltaDir = targetDir - velocityDir;
             
-            float maxDeltaDir = 0.1f;
-            //if (Vector3.Cross(targetDir, velocityDir).magnitude < maxDeltaDir)
+            // float maxDeltaDir = 0.1f;
+            // if (Vector3.Cross(targetDir, velocityDir).magnitude < maxDeltaDir)
             //    return;
             
             rb.AddForce((targetDir + deltaDir) * maxThrust);
@@ -392,7 +435,7 @@ public class FlyAI : MonoBehaviour
 
         void HandleSprite()
         {
-            if (playerInSight)
+            if (PlayerInSight)
             {
                 sr.flipX = playerTransform.position.x < transform.position.x;
                 return;
