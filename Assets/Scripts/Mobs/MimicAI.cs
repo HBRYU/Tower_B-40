@@ -214,6 +214,8 @@ public class MimicAI : MonoBehaviour
         
         
         stateMachine.ChangeState(idleState);
+
+        destination = transform.position;
     }
 
     void FixedUpdate()
@@ -510,7 +512,7 @@ public class MimicAI : MonoBehaviour
             null)
         {
             // #0. target visible from current position
-            path = grid.GetAStarPath(position, target, wCost: 3).ToList();
+            path = grid.GetAStarPath(position, target, wCost: 5).ToList();
         }
         else if(nearestNode != nearestDestinationNode)
         {
@@ -528,7 +530,7 @@ public class MimicAI : MonoBehaviour
                 Vector3.Distance(transform.position, nodePath[1]))
                 nodePath = nodePath.Skip(1).ToArray();
             
-            path.AddRange(grid.GetAStarPath(transform.position, nodePath[0], wCost:3));
+            path.AddRange(grid.GetAStarPath(transform.position, nodePath[0], wCost:5));
             
             for (int i = 0; i < nodePath.Length - 1; i++)
             {
@@ -676,7 +678,7 @@ public class MimicAI : MonoBehaviour
         {
             stasisClock = Random.Range(stasisClockMin, stasisClockMax);
             timeOutTimer = timeOut;
-            currentDestination = Vector3.zero;
+            currentDestination = ai.transform.position;
             isStatic = false;
         }
         
@@ -696,7 +698,7 @@ public class MimicAI : MonoBehaviour
                 
                 candidates[i] += hit.collider != null
                     ? hit.point + ((Vector2)ai.transform.position - hit.point).normalized * 1f
-                    : (Vector3)hit.point;
+                    : ai.transform.position + dir * rayLength;
             }
     
             return candidates[Random.Range(0, rayCount)];

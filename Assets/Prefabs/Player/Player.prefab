@@ -318,6 +318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a318ca021203a488f9f494d05819bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPhaseLayers:
+    serializedVersion: 2
+    m_Bits: 4096
   maxHealth: 100
   health: 100
   appliedDebuffs: 
@@ -384,6 +387,7 @@ MonoBehaviour:
   cooldown: 2
   velocityDamageMultiplier: 0.75
   maxVelocityDamage: 5
+  range: 7.5
   collisionLayers:
     serializedVersion: 2
     m_Bits: 8192
@@ -809,7 +813,7 @@ Transform:
   m_GameObject: {fileID: 8975737089608729486}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.874, z: 0}
+  m_LocalPosition: {x: 0, y: -0.799, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -960,25 +960,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1953089933281833467, guid: 3c0931770b2294601921d2f5a94d4fda, type: 3}
-      propertyPath: m_Color.b
-      value: 0.6698113
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953089933281833467, guid: 3c0931770b2294601921d2f5a94d4fda, type: 3}
-      propertyPath: m_Color.g
-      value: 0.5527306
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953089933281833467, guid: 3c0931770b2294601921d2f5a94d4fda, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4518067
-      objectReference: {fileID: 0}
     - target: {fileID: 4324605940534771709, guid: 3c0931770b2294601921d2f5a94d4fda, type: 3}
       propertyPath: m_Name
       value: JumpPad
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547222299855812530, guid: 3c0931770b2294601921d2f5a94d4fda, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.3975701
       objectReference: {fileID: 0}
     - target: {fileID: 8547222299855812530, guid: 3c0931770b2294601921d2f5a94d4fda, type: 3}
       propertyPath: m_LocalPosition.x

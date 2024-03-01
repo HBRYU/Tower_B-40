@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -9,6 +10,8 @@ public class PlayerStats : MonoBehaviour
     private PlayerWingsBehaviour playerWingsBehaviour;
 
     private float basePlayerWalkSpeed;
+
+    public LayerMask deathPhaseLayers;
     
     public enum debuffs
     {
@@ -48,9 +51,23 @@ public class PlayerStats : MonoBehaviour
         // Temporary
         playerMovement.enabled = false;
         playerAnimation.RequestAnimation("Death", "Trigger");
+        SetPhaseLayers(true);
         playerAnimation.enabled = false;
         playerWingsBehaviour.wing1.Disable(true);
         playerWingsBehaviour.wing2.Disable(true);
+    }
+    
+    void SetPhaseLayers(bool value)
+    {
+        // GPT 4
+        for (int i = 0; i < 32; i++) // There are 32 layers in Unity (0-31)
+        {
+            if (((1 << i) & deathPhaseLayers) != 0)
+            {
+                // This layer is in the LayerMask, so ignore collision with player layer
+                Physics2D.IgnoreLayerCollision(GM.GetPlayer().layer, i, value);
+            }
+        }
     }
 
     private void Start()

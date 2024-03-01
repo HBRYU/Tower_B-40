@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class FlyAI : MonoBehaviour
 {
     private MobStats stats;
+    public bool usePathGraph = true;
 
     public float sight, retainPlayerSightTime;
     private float retainPlayerSightTimer;  // Too lazy to make probable player position logic again. A timer will make-do
@@ -58,7 +59,7 @@ public class FlyAI : MonoBehaviour
         pupilSpriteRenderer = pupilTransform.GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        retainPlayerSightTimer = retainPlayerSightTime;
+        retainPlayerSightTimer = 0f;
         
         stateMachine = new StateMachine();
         
@@ -152,11 +153,13 @@ public class FlyAI : MonoBehaviour
             wallLayers = ai.wallLayers;
             rb = ai.GetComponent<Rigidbody2D>();
             sr = ai.GetComponent<SpriteRenderer>();
+            targetPosition = transform.position;
         }
         
         public void Enter()
         {
             stayTimer = Random.Range(minStayTime, maxStayTime);
+            targetPosition = transform.position;
         }
 
         public void Update()
@@ -339,9 +342,9 @@ public class FlyAI : MonoBehaviour
             float closeEnoughRange = 20f;
             float d = Vector2.Distance(position, target);
             if (d <= closeEnoughRange && Physics2D.Raycast(position, target - position, d, wallLayers).collider ==
-                null)
+                null || !ai.usePathGraph)
             {
-                // #0. target visible from current position
+                // #0. target visible from current position or not using pathGraph
                 path = grid.GetAStarPath(position, target, wCost: 3).ToList();
             }
             else if(nearestNode != nearestDestinationNode)
