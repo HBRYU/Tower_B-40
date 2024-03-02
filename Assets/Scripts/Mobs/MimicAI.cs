@@ -539,8 +539,9 @@ public class MimicAI : MonoBehaviour
             
                 path.AddRange(pathChunk);
             }
-            
-            path.AddRange(grid.GetAStarPath(path.Last(), target));
+
+            var addedPath = grid.GetAStarPath(path.Last(), target);
+            if(addedPath.Length > 0) path.AddRange(addedPath);
         }
         else
         {

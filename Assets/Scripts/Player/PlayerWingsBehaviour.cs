@@ -328,7 +328,7 @@ public class PlayerWing
     public void Disable(bool value)
     {
         Hide(value);
-        overrideWing = !value;
+        overrideWing = value;
         if (value)
         {
             SetVertices(new List<Vector3>(){ Vector3.zero, Vector3.zero, Vector3.zero});
@@ -402,6 +402,8 @@ public class PlayerWingsBehaviour : MonoBehaviour
 
     public LayerMask collisionLayers;
     public TrailRenderer wing1TrailRenderer, wing2TrailRenderer;
+
+    private bool dead;
     
     void Start()
     {
@@ -436,5 +438,17 @@ public class PlayerWingsBehaviour : MonoBehaviour
     {
         wing1.Update();
         wing2.Update();
+
+        // Just in case
+        if (dead)
+        {
+            wing1.Disable(true);
+            wing2.Disable(true);
+        }
+    }
+
+    public void Die()
+    {
+        dead = true;
     }
 }

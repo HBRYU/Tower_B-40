@@ -55,6 +55,7 @@ public class PlayerStats : MonoBehaviour
         playerAnimation.enabled = false;
         playerWingsBehaviour.wing1.Disable(true);
         playerWingsBehaviour.wing2.Disable(true);
+        playerWingsBehaviour.Die();
     }
     
     void SetPhaseLayers(bool value)

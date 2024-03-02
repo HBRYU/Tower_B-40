@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InGameUI : MonoBehaviour
 {
     public StateMachine state = new StateMachine();
+    public bool enableSkillCanvas = true;
 
     private PlayerStats playerStats;
 
@@ -150,7 +151,7 @@ public class InGameUI : MonoBehaviour
         
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && inGameUI.enableSkillCanvas)
             {
                 // Trigger skill canvas
                 animator.SetTrigger("OnSpacePress");
