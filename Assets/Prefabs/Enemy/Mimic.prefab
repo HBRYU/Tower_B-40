@@ -43,7 +43,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470328086787841414}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -65,7 +65,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -736,6 +736,10 @@ MonoBehaviour:
   state: 0
   clawTransform: {fileID: 1552304689979715473}
   jointTransform: {fileID: 3021884647879301038}
+  clawCollider: {fileID: 2259153214153223272}
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 2048
   claw1: {fileID: 8133887081807359393}
   claw2: {fileID: 5714304000083623358}
   clawTargetPosition: {x: 0, y: 0, z: 0}

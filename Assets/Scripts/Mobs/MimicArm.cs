@@ -22,6 +22,8 @@ public class MimicArm : MonoBehaviour
     private MimicAI mimicAI;
     
     public Transform clawTransform, jointTransform;
+    public PolygonCollider2D clawCollider;
+    public LayerMask playerLayers;
     public Transform claw1, claw2;
     public Vector3 clawTargetPosition;
     public float clawTargetAngle;
@@ -273,6 +275,8 @@ public class MimicArm : MonoBehaviour
             chargeTimer -= Time.fixedDeltaTime;
             if (chargeTimer <= 0f && ai.PlayerInSight && Vector3.Distance(arm.transform.position, playerPos) < arm.limbLength * 2)
             {
+                // Switch to "Snap" mode
+                arm.clawCollider.enabled = true;
                 arm.clawTargetPosition = playerPos - arm.transform.position;
                 arm.SetClawSpeed(snapSpeed);
                 arm.mimicAudio.PlaySlashSFX(arm.clawTransform);
@@ -285,10 +289,15 @@ public class MimicArm : MonoBehaviour
             arm.SetClawOpenAmount(0f);
             snapTimer -= Time.fixedDeltaTime;
             
-            bool moving = !(Vector3.Distance(arm.clawTransform.localPosition, arm.clawTargetPosition) < clawSize * 0.5f);
+            bool moving = !(Vector3.Distance(arm.clawTransform.localPosition, arm.clawTargetPosition) < clawSize * 1f);
             if (!moving && !clawAttackFlag)
             {
-                if (Vector3.Distance(arm.clawTransform.position, playerPos) < clawSize)
+                var filter = new ContactFilter2D();
+                filter.SetLayerMask(arm.playerLayers);
+                filter.useLayerMask = true;
+                var results = new Collider2D[1];
+                Physics2D.OverlapCollider(arm.clawCollider, filter, results);
+                if (results[0] != null) // Player collider in results[] -> Player collided with claw
                 {
                     ClawAttack();
                     clawAttackFlag = true;
