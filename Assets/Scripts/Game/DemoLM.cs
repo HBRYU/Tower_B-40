@@ -112,6 +112,7 @@ public class DemoLM : MonoBehaviour
         tutorialText.text = "Good luck.";
         tipText.text = "Defeat the Mimic in under 2 minutes";
         StartCoroutine(DisableTutorialText(3f));
+        playerStats.Heal(100f);
     }
 
     void CloseBossRoomDoor()
@@ -125,6 +126,8 @@ public class DemoLM : MonoBehaviour
         bossFightTime -= Time.deltaTime;
         string minute = bossFightTime >= 60f ? "1" : "0";
         string seconds = Mathf.FloorToInt(bossFightTime % 60f).ToString();
+        if (seconds.Length == 1)
+            seconds = "0" + seconds;
         timerText += minute + ":" + seconds;
         timer.text = timerText;
     }

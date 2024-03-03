@@ -540,8 +540,11 @@ public class MimicAI : MonoBehaviour
                 path.AddRange(pathChunk);
             }
 
-            var addedPath = grid.GetAStarPath(path.Last(), target);
-            if(addedPath.Length > 0) path.AddRange(addedPath);
+            if (path.Count > 0)
+            {
+                var addedPath = grid.GetAStarPath(path.Last(), target);
+                if(addedPath.Length > 0) path.AddRange(addedPath);
+            }
         }
         else
         {
@@ -911,10 +914,13 @@ public class MimicAI : MonoBehaviour
                 PFNode[] availableNodes = currentNode.adjacentNodes
                     .Where(n => !searchedNodes.Contains(n)).ToArray();
 
-                nextNode = availableNodes.Length > 0
-                    ? availableNodes[Random.Range(0, availableNodes.Length)]
-                    : currentNode; // Handle case where all nodes are searched
-                
+                if (availableNodes.Length > 0)
+                    nextNode = availableNodes[Random.Range(0, availableNodes.Length)];
+                else
+                {
+                    Reset();
+                }
+
                 ai.mimicAudio.PlaySearchSFX();
             }
 

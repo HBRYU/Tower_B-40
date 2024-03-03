@@ -28,6 +28,8 @@ public class PlayerStats : MonoBehaviour
     {
         health += heal;
         if (health > maxHealth) health = maxHealth; // maxhealth limitation
+        
+        GM.InGameUIInstance.Heal();
     }
 
     public void TakeDamage(float damage)

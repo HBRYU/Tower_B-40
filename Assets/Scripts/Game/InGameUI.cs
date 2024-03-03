@@ -88,6 +88,12 @@ public class InGameUI : MonoBehaviour
         healthBar.color = new Color(1, 0, 0, 100f / 255f);
     }
 
+    public void Heal()
+    {
+        healthBarFill.color = Color.cyan;
+        healthBar.color = new Color(0, 1, 1, 100f / 255f);
+    }
+
     public void SetWingFill(bool right, float fill)
     {
         float fillAmount = fill < 1f ? fill - fill%(1f/WingFillSteps) : 1f;
