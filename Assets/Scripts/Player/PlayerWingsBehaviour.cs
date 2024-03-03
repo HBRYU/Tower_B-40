@@ -399,7 +399,8 @@ public class PlayerWingsBehaviour : MonoBehaviour
     public Vector3 wing2Offset = new (-0.25f, 0.5f);
 
     public float damage, cooldown, velocityDamageMultiplier, maxVelocityDamage, range;
-
+    public float travelDistanceCoeff;
+    
     public LayerMask collisionLayers;
     public TrailRenderer wing1TrailRenderer, wing2TrailRenderer;
 
