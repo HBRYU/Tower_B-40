@@ -238,6 +238,8 @@ public class PlayerMovement : MonoBehaviour
     private float dashCooldownTimer;
     [SerializeField] private float dashDistance, dashCooldown;
     [SerializeField] private float dashYSnap, upDashSpeed;
+    public bool variableDashDistance = true;
+    public TrailRenderer dashTrailRenderer;
 
     // Internal state variables for movement logic
     private bool useInputVelocity;
@@ -249,6 +251,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool overrideMovement;
 
     private CapsuleCollider2D capsuleCollider;
+
+    public bool shiftDash = false, spaceJump = false;
 
     void Start()
     {
@@ -289,7 +293,7 @@ public class PlayerMovement : MonoBehaviour
     private void HandleUseInputX()
     {
         // Used to determine whether to use x velocity from Input.GetAxis or use its current rb velocity (from dash)
-        OnGround = Physics2D.OverlapCircle(feetPosition.position, capsuleCollider.size.x / 2f - 0.05f, groundLayers) != null;
+        OnGround = Physics2D.OverlapCircle(feetPosition.position, capsuleCollider.size.x / 2f, groundLayers) != null;
         if (OnGround && !prevOnGround || onGroundTimer >= 0.5f || Input.GetAxisRaw("Horizontal") != 0f)
         {
             if(!useInputVelocity && onGroundTimer >= 0.5f) RequestAnimation("PlayDecel", "Trigger");
@@ -339,6 +343,16 @@ public class PlayerMovement : MonoBehaviour
         if (usingMoveAccel && useInputVelocity)
         {
             vx = Mathf.Clamp(direction * walkSpeed * Mathf.Pow(Mathf.Abs(Input.GetAxis("Horizontal")), walkAccelPow) + direction * v0, -walkSpeed, walkSpeed);
+
+            if (onGroundTimer < 0.5f)
+            {
+                // Retain dash velocity even on key press
+                if (vx >= 0f)
+                    vx = Mathf.Max(rb.velocity.x, vx);
+                else
+                    vx = Mathf.Min(rb.velocity.x, vx);
+            }
+            
             rb.velocity = new Vector3(vx, rb.velocity.y);
         }
         else if (useInputVelocity)
@@ -373,7 +387,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         RequestAnimation("On_Ground", OnGround);
-        if (Input.GetKeyDown(KeyCode.W) && OnGround)
+        if ((Input.GetKeyDown(KeyCode.W) || (spaceJump && Input.GetKeyDown(KeyCode.Space))) && OnGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             RequestAnimation("Jump", string.Empty);
@@ -411,16 +425,22 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            float d = Vector3.Distance(position, mousePos) >= dashDistance ? dashDistance : Vector3.Distance(position, mousePos);
-    
+            float d = (Vector3.Distance(position, mousePos) >= dashDistance) || !variableDashDistance ? dashDistance : Vector3.Distance(position, mousePos);
             targetDashPos = position + Vector3.Normalize(mousePos - position) * d;
+            print((targetDashPos - position).magnitude);
         }
-        if (Input.GetKeyDown(KeyCode.F) && dashCooldownTimer <= 0f)
+        if ((Input.GetKeyDown(KeyCode.F) || (shiftDash && Input.GetKeyDown(KeyCode.LeftShift))) && dashCooldownTimer <= 0f)
         {
             Dash();
         }
         else
             dashCooldownTimer -= Time.deltaTime;
+        
+        //Handle dash trail renderer
+        if (dashTrailRenderer.time > 0f)
+            dashTrailRenderer.time -= Time.deltaTime * 0.1f;
+        else
+            dashTrailRenderer.time = 0f;
 
         
         //UI
@@ -435,17 +455,19 @@ public class PlayerMovement : MonoBehaviour
         
         void Dash()
         {
+            rb.velocity = (mousePos - position).normalized * upDashSpeed;
+            print(((mousePos - position).normalized * upDashSpeed).magnitude);
             rb.MovePosition(targetDashPos);
             dashCooldownTimer = dashCooldown;
             playerAnimation.RequestAnimation("Dash", "Trigger");
     
             sprite.flipX = position.x > mousePos.x;
             facingRight = !sprite.flipX;
-            rb.velocity = (mousePos - position).normalized * upDashSpeed;
             useInputVelocity = false;
             onGroundTimer = 0f;
             
             playerAudio.PlayDashSFX();
+            dashTrailRenderer.time = 0.2f;
 
             dashAvailableFlag = false;
         }

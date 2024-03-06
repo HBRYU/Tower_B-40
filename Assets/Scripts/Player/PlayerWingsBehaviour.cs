@@ -406,13 +406,15 @@ public class PlayerWingsBehaviour : MonoBehaviour
 
     private bool dead;
     
+    public bool useLeftClickOnly;
+    
     void Start()
     {
         wing1 = new PlayerWing(false, damage, wing1meshObject, wingMaterial, wingCooldownMaterial, wing1Offset, 0.5f, 7f, range, cooldown, collisionLayers);
         wing2 = new PlayerWing(true, damage, wing2meshObject, wingMaterial, wingCooldownMaterial, wing2Offset, 0.5f, 7f, range, cooldown, collisionLayers);
 
         wing1.inputMouseButton = 0;
-        wing2.inputMouseButton = 1;
+        wing2.inputMouseButton = useLeftClickOnly ? 0 : 1;
 
         wing1.trailRenderer = wing1TrailRenderer;
         wing2.trailRenderer = wing2TrailRenderer;

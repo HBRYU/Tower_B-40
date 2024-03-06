@@ -49,8 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67bc3326a3e4e1647a23a6a3c17578f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pfManager: {fileID: 7281170357888884027}
-  audioManager: {fileID: 0}
   physicsSpeedMutlitplier: 1
   standardAStarTilemap: {fileID: 0}
   colliderTilemap: {fileID: 0}

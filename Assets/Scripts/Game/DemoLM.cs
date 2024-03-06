@@ -20,13 +20,13 @@ public class DemoLM : MonoBehaviour
     public List<TriggerEvent> triggerEvents;
 
     public GameObject[] flies;
-    public GameObject mimic;
+    public GameObject[] mimics;
     public Animator bossRoomGateAnimator;
 
     public float bossFightTime = 120f;
     public TextMeshProUGUI timer;
     public bool bossFightStarted = false;
-    private MobStats mimicStats;
+    private List<MobStats> mimicStats = new List<MobStats>();
     private PlayerStats playerStats;
     private bool endFlag = false;
 
@@ -63,13 +63,24 @@ public class DemoLM : MonoBehaviour
 
         if (bossFightStarted && !endFlag)
         {
-            mimicHealthBarFill.fillAmount = (mimicStats.health / mimicStats.maxHealth);
-            if(!mimicStats.Dead && bossFightTime > 0f && playerStats.health > 0f)
+            mimicHealthBarFill.fillAmount = (mimicStats[0].health / mimicStats[0].maxHealth);
+            bool mimicsAlive = false;
+            foreach (var mimicStat in mimicStats)
+            {
+                if (!mimicStat.Dead)
+                    mimicsAlive = true;
+            }
+            if(mimicsAlive && bossFightTime > 0f && playerStats.health > 0f)
                 HandleTimer();
             else
             {
-                score = playerStats.health + 100f - mimicStats.health * 0.5f;
-                if (mimicStats.Dead)
+                float mimicHealthScoreDeduction = 0f;
+                foreach (var mimicStat in mimicStats)
+                {
+                    mimicHealthScoreDeduction += mimicStat.health * 0.5f;
+                }
+                score = playerStats.health + 100f - mimicHealthScoreDeduction;
+                if (!mimicsAlive)
                     score += bossFightTime;
                 timer.text = "Score: " + Mathf.FloorToInt(score).ToString();
                 DisplayEndLevelText();
@@ -97,17 +108,23 @@ public class DemoLM : MonoBehaviour
             fly.SetActive(true);
         }
 
-        tutorialText.text = "Press [Right+Left Click] to control wings";
+        tutorialText.text = "Hold [Left+Right Click] to control wings";
         tipText.text = "Wings deal additional damage with higher velocity";
     }
 
     void EnterBossRoom()
     {
-        mimic.SetActive(true);
+        for (int i = 0; i < mimics.Length; i++)
+        {
+            var mimic = mimics[i];
+            mimic.SetActive(true);
+            mimicStats.Add(mimic.GetComponent<MobStatsInterface>().stats);
+        }
+
         CloseBossRoomDoor();
         bossFightStarted = true;
         timer.gameObject.SetActive(true);
-        mimicStats = mimic.GetComponent<MobStatsInterface>().stats;
+        
         mimicHealthBar.SetActive(true);
         tutorialText.text = "Good luck.";
         tipText.text = "Defeat the Mimic in under 2 minutes";
@@ -134,7 +151,7 @@ public class DemoLM : MonoBehaviour
 
     void DashTutorial()
     {
-        tutorialText.text = "Press [F] to dash towards mouse";
+        tutorialText.text = "Press [F or Left Shift] to dash towards mouse";
         tipText.text = "Cooldown: 3 seconds";
     }
 
@@ -153,6 +170,10 @@ public class DemoLM : MonoBehaviour
         if (Input.GetKey(KeyCode.F5))
         {
             SceneManager.LoadScene(0);
+        }
+        if (Input.GetKey(KeyCode.F6))
+        {
+            SceneManager.LoadScene(1);
         }
     }
 
